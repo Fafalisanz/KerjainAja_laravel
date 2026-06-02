@@ -1,0 +1,206 @@
+body {
+  background-color: #f4f7f6;
+  font-family: "Poppins", sans-serif;
+  margin: 0;
+  padding: 0;
+}
+.container-detail {
+  max-width: 100%;
+  margin: 0;
+  padding: 0;
+  background-color: #f5f5f5;
+  min-height: 100vh;
+}
+
+.nav-back {
+  position: absolute; /* Membuatnya melayang menimpa banner */
+  top: 20px; /* Jarak dari atas layar */
+  left: 30px; /* Jarak dari kiri layar */
+  color: white; /* Ubah warnanya jadi putih agar terlihat di atas hijau */
+  text-decoration: none;
+  font-size: 16px;
+  font-weight: bold;
+  z-index: 10; /* Memastikan tombolnya berada di lapisan paling depan */
+  transition: color 0.3s;
+}
+
+.nav-back:hover {
+  color: #f19a4b; /* Efek warna orange saat disorot mouse */
+}
+
+/* Kartu Header Utama */
+.profile-header-card {
+  background: #ffffff;
+  border-radius: 0 0 20px 20px; /* Ujung bawah kartu dibuat melengkung halus */
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05); /* Bayangan lembut */
+  padding-bottom: 40px; /* Memberi ruang napas di bawah tombol */
+  margin-bottom: 40px;
+}
+
+.cover-photo {
+  width: 100%;
+  height: 250px; /* Lebih tinggi untuk web */
+  background-color: #114d4d;
+}
+
+.btn-ikuti {
+  position: absolute;
+  right: 20px;
+  top: 20px;
+  color: white;
+  font-size: 14px;
+  cursor: pointer;
+  font-weight: 600;
+  transition: 0.3s;
+}
+.btn-ikuti:hover {
+  color: #0ea5e9;
+  transform: scale(1.05);
+}
+
+/* Kontainer Info Profil (Flexbox untuk merapikan tumpukan) */
+.profile-info {
+  max-width: 800px; /* Dibuat sedikit lebih sempit agar teks tidak terlalu memanjang */
+  margin: 0 auto;
+  padding: 0 20px;
+  text-align: center;
+}
+
+/* Mempercantik foto profil */
+.foto-bulat {
+  width: 150px;
+  height: 150px;
+  border-radius: 50%;
+  border: 6px solid white;
+  object-fit: cover;
+  display: block; /* Wajib agar bisa ke tengah sempurna */
+  margin: -75px auto 15px auto; /* Menarik foto ke atas menabrak warna hijau */
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.15); /* Efek melayang pada foto */
+  position: relative;
+  z-index: 2;
+}
+
+/* Teks Nama & Keahlian */
+.name-title {
+  margin-top: 45px; /* Mendorong teks ke bawah agar tidak menabrak foto */
+}
+.name-title {
+  text-align: center !important; /* Memaksa rata tengah */
+  width: 100%;
+  margin-top: 15px; /* Jarak dari foto profil */
+  display: flex;
+  flex-direction: column;
+  align-items: center; /* Kunci tambahan untuk flexbox ke tengah */
+}
+.name-title h1 span {
+  margin: 0;
+  font-size: 26px;
+  color: #333;
+}
+.name-title p {
+  margin: 5px 0 0 0;
+  font-size: 16px;
+  color: #666;
+}
+
+/* Statistik Bintang & Lokasi */
+/* Merapikan baris bintang, lokasi, dan harga */
+.stats-row {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap; /* Mencegah berantakan di layar kecil */
+  gap: 30px; /* Jarak antar elemen */
+  margin: 20px 0;
+  color: #555;
+  font-size: 15px;
+  font-weight: 500;
+}
+
+.stats-row div {
+  display: flex;
+  align-items: center;
+  gap: 8px; /* Jarak antara emoji dan teks */
+}
+
+/* Tombol Action */
+/* Merapikan posisi tombol */
+.action-buttons {
+  display: flex;
+  justify-content: center;
+  gap: 15px;
+  margin-top: 25px;
+}
+
+/* Opsional: Mempercantik desain tombol jika belum ada */
+.btn-chat-outline {
+  padding: 10px 30px;
+  border: 2px solid #114d4d;
+  color: #114d4d;
+  background: transparent;
+  border-radius: 8px;
+  text-decoration: none;
+  font-weight: 600;
+  transition: 0.3s;
+}
+
+.btn-chat-outline:hover {
+  background: #114d4d;
+  color: white;
+}
+
+.btn-pesan-solid {
+  padding: 10px 30px;
+  background: #f19a4b;
+  color: white;
+  border-radius: 8px;
+  text-decoration: none;
+  font-weight: 600;
+  transition: 0.3s;
+}
+
+.btn-pesan-solid:hover {
+  background: #e08b3e;
+}
+
+/* Box Informasi (Tentang & Layanan) */
+.info-box {
+  background: white;
+  padding: 20px;
+  border-radius: 15px;
+  margin-bottom: 15px;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.03);
+}
+.info-box h3 {
+  font-size: 16px;
+  color: #222;
+  margin: 0 0 10px 0;
+}
+.info-box p {
+  font-size: 14px;
+  color: #555;
+  line-height: 1.6;
+  margin: 0;
+}
+
+/* List Layanan Dinamis */
+.layanan-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+.layanan-list li {
+  font-size: 14px;
+  color: #555;
+  margin-bottom: 8px;
+  position: relative;
+  padding-left: 15px;
+}
+.layanan-list li::before {
+  content: "•";
+  color: #0d4a48;
+  font-weight: bold;
+  position: absolute;
+  left: 0;
+  top: 0;
+}

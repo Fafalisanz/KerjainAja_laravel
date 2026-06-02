@@ -1,0 +1,1037 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: "Poppins", sans-serif;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+.text-center {
+    text-align: center; /* Membuat teks di dalam elemen ini rata tengah */
+    width: 100%; /* Memastikan elemen mengambil lebar penuh */
+}
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto; /* Membuat kotak pembungkusnya berada di tengah layar */
+    padding: 0 20px;
+}
+
+body {
+    background-color: #ffffff;
+    color: #1a4a52; /* Warna teks dominan (teal gelap) */
+}
+
+/* --- NAVBAR --- */
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px 8%;
+    background-color: #ffffff;
+}
+
+.logo img {
+    height: 40px; /*ukuran logo */
+}
+
+/* =========================================
+   STYLE UNTUK MENU NAVIGASI (TENGAH)
+   ========================================= */
+.navbar nav {
+    display: flex;
+    gap: 35px; /* Mengatur jarak antar tulisan menu */
+    align-items: center;
+}
+
+.navbar nav a {
+    text-decoration: none; /* Menghilangkan garis bawah bawaan browser */
+    color: #0c4b4a; /* Warna teks hijau gelap menyesuaikan tema KerjainAja */
+    font-weight: 600; /* Membuat tulisan agak tebal */
+    font-size: 16px; /* Ukuran font */
+    font-family: "Poppins", sans-serif; /* Memastikan font seragam */
+    transition: color 0.3s ease; /* Efek halus saat warna berubah */
+}
+
+/* Efek saat mouse diarahkan (hover) ke menu */
+.navbar nav a:hover {
+    color: #e65c00; /* Berubah menjadi warna oranye seperti tombol saat disentuh mouse */
+}
+
+.nav-links {
+    display: flex;
+    gap: 30px;
+}
+
+.nav-links a {
+    text-decoration: none;
+    color: #1a4a52;
+    font-weight: 600;
+    font-size: 14px;
+}
+
+.nav-actions {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+}
+
+/* --- PROFILE DROPDOWN --- */
+.profile-dropdown {
+    position: relative;
+}
+
+.dropdown-menu {
+    display: none;
+    position: absolute;
+    right: 0;
+    top: 50px;
+    background: white;
+    border-radius: 12px;
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.15);
+    min-width: 200px;
+    z-index: 999;
+    padding: 8px 0;
+}
+
+.dropdown-header {
+    padding: 12px 16px;
+    display: flex;
+    flex-direction: column;
+}
+
+.dropdown-header strong {
+    font-size: 14px;
+    color: #1a1a1a;
+}
+
+.dropdown-header small {
+    font-size: 12px;
+    color: #888;
+}
+
+.dropdown-menu hr {
+    border: none;
+    border-top: 1px solid #f0f0f0;
+    margin: 4px 0;
+}
+
+.dropdown-menu a {
+    display: block;
+    padding: 10px 16px;
+    color: #333;
+    text-decoration: none;
+    font-size: 14px;
+    transition: background 0.2s;
+}
+
+.dropdown-menu a:hover {
+    background: #f5f5f5;
+}
+
+.dropdown-menu button {
+    width: 100%;
+    padding: 10px 16px;
+    background: none;
+    border: none;
+    text-align: left;
+    color: #e53935;
+    font-size: 14px;
+    cursor: pointer;
+    font-family: "Poppins", sans-serif;
+}
+
+.dropdown-menu button:hover {
+    background: #fff5f5;
+}
+
+.dropdown-menu.show {
+    display: block;
+}
+
+.btn-text {
+    text-decoration: none;
+    color: #e65c00;
+    font-weight: 700;
+    padding: 8px 15px;
+    border-radius: 5px;
+    transition: all 0.3s ease;
+}
+
+.btn-text:hover {
+    background-color: #0c4b4a;
+    color: #ffffff;
+}
+
+.btn-masuk {
+    text-decoration: none;
+    background-color: #e65c00; /* Warna orange */
+    color: white;
+    padding: 8px 20px;
+    border-radius: 5px;
+    font-weight: 700;
+}
+
+/* --- HERO SECTION --- */
+.hero {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 50px 8%;
+    min-height: 80vh;
+}
+
+.hero-content {
+    flex: 1;
+    max-width: 600px;
+}
+
+.hero-content h1 {
+    font-size: 38px;
+    color: #1a4a52;
+    margin-bottom: 10px;
+    font-weight: 800;
+}
+
+.hero-content h2 {
+    font-size: 32px;
+    color: #1a4a52;
+    margin-bottom: 20px;
+}
+
+.text-orange {
+    color: #e65c00;
+}
+
+.hero-content p {
+    font-size: 16px;
+    line-height: 1.6;
+    margin-bottom: 40px;
+    color: #2c656e;
+}
+
+.hero-buttons {
+    display: flex;
+    gap: 20px;
+}
+
+/* Gaya dasar untuk semua tombol di Hero */
+.btn-primary,
+.btn-outline {
+    text-decoration: none;
+    padding: 12px 24px;
+    border-radius: 30px;
+    font-weight: 600;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+/* Khusus Tombol Orange */
+.btn-primary {
+    background-color: #e65c00;
+    color: white;
+    box-shadow: 0 4px 6px rgba(230, 92, 0, 0.3);
+}
+
+/* Tombol Outline (Garis pinggir) */
+.btn-outline {
+    text-decoration: none;
+    background-color: transparent;
+    color: #1a4a52;
+    padding: 12px 24px;
+    border: 2px solid #1a4a52;
+    border-radius: 30px;
+    font-weight: 600;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    transition: all 0.3s ease; /* Tambahkan baris ini biar efeknya halus */
+}
+
+.btn-outline:hover {
+    background-color: #0c4b4a;
+    color: #ffffff;
+    border-color: #0c4b4a;
+    transform: translateY(-3px);
+    box-shadow: 0 5px 15px rgba(12, 75, 74, 0.3);
+}
+.hero-image {
+    flex: 1;
+    display: flex;
+    justify-content: flex-end;
+}
+
+.hero-image img {
+    max-width: 100%;
+    height: auto;
+}
+
+/* page 2*/
+/* --- VISI SECTION --- */
+.visi {
+    background-color: #1a4a52; /* Warna dasar  */
+    position: relative;
+    padding: 80px 8%;
+    text-align: center;
+    overflow: hidden; /* Mencegah gambar background keluar batas */
+}
+
+/* Pengaturan Gambar Background */
+.visi-bg {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 60%;
+    opacity: 0.2; /* Membuat gambar menjadi transparan */
+    z-index: 0;
+    pointer-events: none; /* Agar gambar tidak menghalangi klik */
+}
+
+/* Pengaturan Teks agar di atas gambar background */
+.visi-content {
+    position: relative;
+    z-index: 1;
+    color: white;
+    margin-bottom: 50px;
+}
+
+.visi-title {
+    font-size: 32px;
+    font-weight: 800;
+    margin-bottom: 10px;
+    letter-spacing: 2px;
+}
+
+.visi-subtitle {
+    font-size: 28px;
+    font-weight: 700;
+    margin-bottom: 20px;
+}
+
+.visi-desc {
+    font-size: 16px;
+    max-width: 800px; /* Membatasi lebar paragraf agar rapi */
+    margin: 0 auto;
+    line-height: 1.6;
+    color: #e0e0e0;
+}
+
+/* Pengaturan Kartu Auto-Scroll */
+.cards-wrapper {
+    position: relative;
+    z-index: 1;
+    overflow: hidden; /* Menyembunyikan kartu yang keluar dari layar */
+    width: 100%;
+}
+
+.cards-container {
+    display: flex;
+    gap: 20px;
+    width: max-content; /* Membiarkan lebar container memanjang sesuai jumlah kartu */
+    /* Menjalankan animasi bernama 'scroll' selama 25 detik, kecepatan stabil, tanpa henti */
+    animation: scrollCards 15s linear infinite;
+}
+
+/* Trik UX: Saat mouse diarahkan ke kartu, animasinya berhenti agar mudah dibaca */
+.cards-container:hover {
+    animation-play-state: paused;
+}
+
+/* Keyframe Animasi Auto-Scroll */
+@keyframes scrollCards {
+    0% {
+        transform: translateX(0); /* Posisi awal */
+    }
+    100% {
+        /* Bergeser ke kiri persis separuh dari total panjang container (5 kartu pertama) */
+        transform: translateX(calc(-50% - 10px));
+    }
+}
+
+/* Desain per Kartu */
+.card {
+    background-color: white;
+    width: 300px;
+    border-radius: 15px;
+    padding: 40px 20px;
+    text-align: center;
+    /* Efek transisi halus saat di-hover */
+    transition:
+        transform 0.3s ease,
+        box-shadow 0.3s ease;
+}
+
+/* Efek saat kartu ditunjuk mouse */
+.card:hover {
+    transform: translateY(-10px); /* Kartu sedikit terangkat ke atas */
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2); /* Bayangan membesar */
+}
+
+.card img {
+    height: 60px;
+    margin-bottom: 20px;
+}
+
+.card h4 {
+    color: #1a4a52;
+    font-size: 20px;
+    margin-bottom: 15px;
+    font-weight: 700;
+}
+
+.card p {
+    color: #2c656e;
+    font-size: 14px;
+    line-height: 1.6;
+}
+
+/* Page 3 */
+/* Kotak Pencarian */
+.search-container {
+    display: flex;
+    align-items: center;
+    background: #1a4a52; /* Warna Teal sesuai desain */
+    border-radius: 50px;
+    padding: 10px 25px;
+    max-width: 700px;
+    margin: 0 auto;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+}
+
+.search-container input {
+    flex: 1;
+    background: transparent;
+    border: none;
+    outline: none;
+    padding: 10px 15px;
+    font-size: 16px;
+    color: #ffffff; /* Teks yang diketik warna putih */
+}
+
+.search-container input::placeholder {
+    color: #a0babb;
+}
+
+.search-icon,
+.mic-icon {
+    width: 24px;
+    height: 24px;
+    cursor: pointer;
+    filter: brightness(0) invert(1);
+}
+
+.search-section {
+    text-align: center;
+    padding-top: 80px;
+    padding-bottom: 80px;
+    background-color: #ffffff;
+    display: flex;
+    flex-direction: column;
+    align-items: center; /* Memastikan elemen input & gambar ke tengah */
+}
+
+.search-bar-container {
+    width: 100%;
+    max-width: 600px;
+    margin: 20px auto; /* Memberi jarak dan memposisikan di tengah */
+}
+
+/* Memastikan maskot di bawah pencarian juga di tengah */
+.search-section img.mascot {
+    display: block;
+    margin: 0 auto;
+    max-width: 500px;
+}
+
+.search-section h2 {
+    margin-bottom: 15px;
+    color: #1a4f54;
+}
+
+.search-section p {
+    margin-bottom: 30px;
+    color: #555555;
+}
+
+/* page 4 */
+/* Background Hijau Gelap untuk Section Testimoni */
+.bg-dark-green {
+    background-color: #1a4f54;
+    padding-top: 80px; /* Ditambah sedikit biar judul tidak terlalu mepet ke atas */
+    padding-bottom: 80px;
+    color: white; /* Menjadikan semua teks di dalam section ini otomatis putih */
+}
+
+.bg-dark-green h2 {
+    color: white;
+    font-weight: 800;
+}
+/* --- Aturan Wrapper Testimoni --- */
+.testimoni-wrapper {
+    width: 100%;
+    overflow: hidden; /* Menyembunyikan kartu yang melewati layar */
+    padding: 40px 0;
+}
+
+.testimoni-track {
+    display: flex;
+    gap: 30px;
+    width: max-content; /* Penting agar kartu berjejer ke samping, bukan numpuk ke bawah */
+    margin-bottom: 40px; /* Jarak antara baris atas dan bawah */
+}
+
+/* --- Desain Kartu Testimoni --- */
+.testimoni-card {
+    background-color: #ffffff;
+    color: #333;
+    width: 300px; /* Lebar kartu disamakan */
+    border-radius: 15px;
+    padding: 20px;
+    text-align: center;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+}
+
+.testimoni-card img {
+    width: 100%;
+    height: 150px;
+    object-fit: cover;
+    border-radius: 10px;
+    margin: 10px 0;
+}
+
+/* --- ANIMASI BARIS ATAS (Kanan ke Kiri) --- */
+.track-left,
+.track-top {
+    /* Kecepatan gerak diperlambat sedikit jadi 25s agar teks nyaman dibaca */
+    animation: scrollLeftToRight 15s linear infinite;
+}
+
+@keyframes scrollLeftToRight {
+    0% {
+        transform: translateX(0);
+    }
+    100% {
+        /* Menggunakan -50% agar looping berjalan mulus tanpa jeda kosong */
+        transform: translateX(-10%);
+    }
+}
+
+/* --- ANIMASI BARIS BAWAH (Kiri ke Kanan) --- */
+.track-bottom {
+    /* Kecepatan gerak baris bawah (25 detik) */
+    animation: scrollRightToLeft 15s linear infinite;
+}
+
+@keyframes scrollRightToLeft {
+    0% {
+        transform: translateX(
+            -10%
+        ); /* Mulai dari tengah agar jalannya ke kanan */
+    }
+    100% {
+        transform: translateX(0);
+    }
+}
+
+/* Efek berhenti saat kursor diarahkan ke kartu */
+.testimoni-track:hover {
+    animation-play-state: paused;
+}
+
+/* =========================================
+   STYLE HALAMAN FAQ
+   ========================================= */
+.faq-section {
+    background-color: #ffffff;
+    padding: 80px 5%;
+}
+
+.faq-layout {
+    display: flex;
+    gap: 40px; /* Jarak antara kolom kiri dan kanan */
+    align-items: flex-start; /* Agar kotak tidak otomatis memanjang ke bawah */
+}
+
+/* --- Kolom Kiri (Pertanyaan) --- */
+.faq-left {
+    flex: 1; /* Mengambil 50% lebar layar */
+}
+
+.faq-left h2 {
+    color: #1a4f54;
+    font-size: 2.2em;
+    margin-bottom: 30px;
+    font-weight: 800;
+}
+
+.faq-list {
+    display: flex;
+    flex-direction: column;
+    gap: 15px; /* Jarak antar tombol pertanyaan */
+}
+
+.faq-btn {
+    background-color: #ffffff;
+    border: 2px solid #eaeaea;
+    border-radius: 10px;
+    padding: 18px 25px;
+    text-align: left;
+    font-size: 16px;
+    color: #555;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.02);
+}
+
+/* Saat tombol pertanyaan ditunjuk mouse */
+.faq-btn:hover {
+    border-color: #1a4f54;
+    background-color: #f4fcfc;
+}
+
+/* Saat tombol pertanyaan sedang aktif / diklik */
+.faq-btn.active {
+    background-color: #1a4f54; /* Warna hijau tema */
+    color: #ffffff;
+    border-color: #1a4f54;
+}
+
+/* --- Kolom Kanan (Jawaban) --- */
+.faq-right {
+    flex: 1; /* Mengambil 50% lebar layar */
+    /* Posisi sticky membuat kotak jawaban tetap terlihat walau kolom kiri di-scroll */
+    position: sticky;
+    top: 100px;
+}
+
+.faq-answer-card {
+    background-color: #eaf4f4; /* Hijau super muda, mirip desain */
+    border-radius: 15px;
+    padding: 40px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+    border: 1px solid #c4e3e3;
+    /* Animasi saat jawaban berganti */
+    transition: opacity 0.3s ease;
+}
+
+.faq-answer-card h3 {
+    color: #1a4f54;
+    font-size: 1.8em;
+    margin-bottom: 20px;
+    font-weight: 700;
+    line-height: 1.3;
+}
+
+.faq-answer-card p {
+    color: #444444;
+    font-size: 1.1em;
+    line-height: 1.8;
+}
+
+/* --- Aturan Tambahan untuk Maskot di FAQ --- */
+.faq-mascot-container {
+    text-align: center; /* Membuat maskot ke tengah di dalam kotak */
+    margin-bottom: 25px; /* Jarak antara maskot dan judul jawaban */
+}
+
+.faq-mascot {
+    width: 100px; /* Atur ukuran maskot agar tidak terlalu besar */
+    height: auto;
+    /* Beri efek bayangan menonjol seperti permintaanmu sebelumnya */
+    filter: drop-shadow(4px 4px 8px rgba(0, 0, 0, 0.1));
+    transition: transform 0.3s ease; /* Untuk efek animasi sedikit saat jawaban berganti */
+}
+
+/* Sedikit animasi agar maskot 'lompat' saat jawaban berganti (opsional) */
+.faq-answer-card h3.changed + p + .faq-mascot4-container .faq-mascot4 {
+    transform: translateY(-5px);
+}
+
+/* =========================================
+   STYLE FOOTER (BAGIAN BAWAH)
+   ========================================= */
+.footer {
+    background-color: #1a4f54; /* Hijau gelap tema KerjainAja */
+    color: #ffffff;
+    padding-top: 60px;
+    font-family: "Poppins", sans-serif;
+}
+
+.footer-content {
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap; /* Agar turun ke bawah jika dibuka di HP */
+    gap: 40px;
+    padding-bottom: 50px;
+}
+
+.footer-col {
+    flex: 1;
+    min-width: 200px; /* Jangan terlalu kecil di layar sempit */
+}
+
+/* --- Kolom 1 (Kiri) --- */
+.about-col {
+    flex: 2; /* Kolom pertama dibuat lebih lebar dari yang lain */
+}
+
+.footer-logo {
+    height: 80px;
+    margin-bottom: 20px;
+}
+
+.about-col p {
+    color: #e0e0e0;
+    font-size: 15px;
+    line-height: 1.6;
+    margin-bottom: 25px;
+    max-width: 400px; /* Membatasi panjang teks agar rapi */
+}
+
+/* Ikon Sosial Media */
+.social-links {
+    display: flex;
+    gap: 15px;
+}
+
+.social-links a img {
+    width: 35px;
+    height: 35px;
+    object-fit: contain; /* Memastikan gambar tidak gepeng */
+    border-radius: 5px; /* Memberi lengkungan halus di ujung kotak, bukan bulat penuh */
+    transition: transform 0.3s ease;
+}
+
+.social-links a img:hover {
+    transform: translateY(-5px); /* Efek melayang saat kursor diarahkan */
+}
+
+/* --- Kolom 2 & 3 (Menu Link) --- */
+.links-col h3 {
+    font-size: 20px;
+    font-weight: 700;
+    margin-bottom: 25px;
+    color: #ffffff;
+}
+
+.links-col ul {
+    list-style: none; /* Menghilangkan titik (bullet) bawaan HTML */
+    padding: 0;
+}
+
+.links-col ul li {
+    margin-bottom: 15px;
+}
+
+.links-col ul li a {
+    color: #e0e0e0;
+    text-decoration: none; /* Menghilangkan garis bawah link */
+    font-size: 15px;
+    transition: color 0.3s ease;
+}
+
+.links-col ul li a:hover {
+    color: #f28b00; /* Teks berubah orange saat dihover */
+}
+
+/* --- Copyright Paling Bawah --- */
+.footer-bottom {
+    text-align: center;
+    padding: 20px;
+    background-color: #143e42; /* Warna hijau yang sedikit lebih gelap dari atasnya */
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.footer-bottom p {
+    color: #b0b0b0;
+    font-size: 14px;
+    margin: 0;
+}
+
+/* ========================================= */
+/* CSS DAFTAR FREELANCER (VERSI GLOW UP)     */
+/* ========================================= */
+.freelance-section {
+    padding: 60px 8%;
+    background-color: #ffffff;
+
+    /* --- KODE PENARIK KE ATAS --- */
+    margin-top: -60px;
+    position: relative;
+    z-index: 10;
+    border-radius: 30px 30px 0 0; /* Memberi lengkungan di sudut atas agar tidak kaku */
+    box-shadow: 0 -10px 20px rgba(0, 0, 0, 0.05); /* Sedikit bayangan lembut di bagian atas */
+}
+
+.freelance-section h2 {
+    text-align: center;
+    color: #114d4d;
+    font-family: "Poppins", sans-serif;
+    font-weight: 800;
+    font-size: 32px;
+    margin-bottom: 30px;
+}
+
+.filter-kategori {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 15px;
+    margin-bottom: 50px;
+    position: relative;
+    z-index: 20;
+}
+
+.btn-filter {
+    padding: 12px 25px;
+    border: none;
+    background: #f0f5f5;
+    color: #555;
+    border-radius: 30px;
+    cursor: pointer;
+    font-family: "Poppins", sans-serif;
+    font-weight: 600;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+}
+
+.btn-filter.active,
+.btn-filter:hover {
+    background: #114d4d;
+    color: white;
+    transform: translateY(-3px);
+    box-shadow: 0 8px 15px rgba(17, 77, 77, 0.2);
+}
+
+.freelance-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 20px;
+    margin-top: 40px;
+}
+
+.freelance-card {
+    background: white;
+    border-radius: 20px;
+    padding: 30px 20px;
+    text-align: center;
+    border: 1px solid #eee;
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.04);
+    transition: all 0.3s ease;
+}
+
+.freelance-card:hover {
+    transform: translateY(-10px);
+    border-color: #114d4d;
+    box-shadow: 0 15px 35px rgba(17, 77, 77, 0.1);
+}
+
+.freelance-card img {
+    width: 110px;
+    height: 110px;
+    border-radius: 50%;
+    object-fit: cover;
+    margin-bottom: 15px;
+    border: 4px solid #e0efef;
+}
+
+.freelance-card h3 {
+    color: #333;
+    margin: 10px 0 5px;
+    font-size: 20px;
+}
+
+.job-tag {
+    background: #e0efef;
+    color: #114d4d;
+    padding: 6px 18px;
+    border-radius: 20px;
+    font-size: 13px;
+    display: inline-block;
+    font-weight: 700;
+    margin-bottom: 15px;
+}
+
+.btn-detail {
+    display: inline-block;
+    margin-top: 10px;
+    padding: 12px 20px;
+    background: #f19a4b;
+    color: white;
+    text-decoration: none;
+    border-radius: 12px;
+    font-weight: 600;
+    width: 100%;
+    box-sizing: border-box;
+    transition: background 0.3s;
+}
+
+.btn-detail:hover {
+    background: #d8873f;
+}
+
+@keyframes fadeInCard {
+    from {
+        opacity: 0;
+        transform: translateY(15px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+/* =========================================
+   RESPONSIVE DESIGN (TABLET & MOBILE)
+   ========================================= */
+
+/* Untuk layar seukuran Tablet & Laptop Kecil (Max 992px) */
+@media screen and (max-width: 992px) {
+    .hero {
+        flex-direction: column;
+        text-align: center;
+        padding-top: 120px;
+    }
+    .hero-content {
+        max-width: 100%;
+        margin-bottom: 40px;
+        padding-right: 0;
+    }
+    .hero-buttons {
+        justify-content: center;
+    }
+    .logo-image {
+        width: 80%;
+        margin: 0 auto;
+    }
+
+    /* Perbaikan Bagian Visi yang numpuk */
+    .visi {
+        flex-direction: column;
+        height: auto;
+        min-height: auto;
+        padding: 40px 20px;
+    }
+    .visi-content {
+        width: 100%;
+        text-align: center;
+        padding-top: 0;
+        margin-bottom: 40px;
+    }
+    .cards-wrapper {
+        position: relative;
+        width: 100%;
+        right: 0;
+        top: 0;
+        transform: none;
+        padding-left: 0;
+    }
+
+    .search-section {
+        flex-direction: column;
+        text-align: center;
+        padding: 60px 20px;
+    }
+    .search-content {
+        max-width: 100%;
+        margin-bottom: 40px;
+    }
+    .search-mascot {
+        width: 60%;
+        margin: 0 auto;
+    }
+
+    .faq-layout {
+        flex-direction: column;
+    }
+    .faq-left,
+    .faq-right {
+        width: 100%;
+        padding: 0;
+    }
+    .faq-right {
+        margin-top: 40px;
+    }
+}
+
+/* Untuk layar HP & Tablet Kecil (Max 768px) */
+@media screen and (max-width: 768px) {
+    .navbar {
+        flex-direction: column;
+        padding: 15px;
+        gap: 15px;
+        text-align: center;
+    }
+    nav {
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 15px;
+    }
+    .nav-actions {
+        width: 100%;
+        justify-content: center;
+    }
+
+    /* Ubah Grid Pahlawan/Pekerja jadi 2 kolom */
+    .freelance-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 15px;
+    }
+
+    .footer-content {
+        flex-direction: column;
+        text-align: center;
+        gap: 40px;
+    }
+    .social-links {
+        justify-content: center;
+    }
+}
+
+/* Untuk layar HP Kecil (Max 480px) */
+@media screen and (max-width: 480px) {
+    .hero h1 {
+        font-size: 32px;
+    }
+    .hero h2 {
+        font-size: 24px;
+    }
+    .hero-buttons {
+        flex-direction: column;
+        gap: 15px;
+    }
+    .btn-primary,
+    .btn-outline {
+        width: 100%;
+        text-align: center;
+        justify-content: center;
+    }
+
+    .search-container {
+        flex-direction: column;
+        border-radius: 15px;
+        padding: 15px;
+        gap: 15px;
+    }
+    .search-container input {
+        text-align: center;
+    }
+
+    .filter-kategori {
+        flex-wrap: wrap;
+        gap: 10px;
+    }
+    .btn-filter {
+        flex: 1 1 40%; /* Biar tombol kategorinya menyesuaikan lebar */
+    }
+
+    /* Ubah Grid Pahlawan/Pekerja jadi 1 kolom ke bawah */
+    .freelance-grid {
+        grid-template-columns: 1fr;
+    }
+}

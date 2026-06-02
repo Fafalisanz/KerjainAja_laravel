@@ -1,0 +1,160 @@
+body {
+  font-family: "Poppins", sans-serif;
+  background-color: #114d4d;
+  margin: 0;
+  padding: 0;
+}
+
+.order-container {
+  background-color: #114d4d;
+  width: 100%;
+  max-width: 1800px; /* Hapus batasan lebar agar full */
+  min-height: 100vh; /* Penuhi tinggi layar */
+  margin: 0%;
+  border-radius: 0; /* Hilangkan sudut membulat */
+  padding: 30px;
+  box-sizing: border-box; /* Kunci penting agar padding tidak bikin layar bisa digeser ke kanan */
+  color: white;
+  box-shadow: none; /* Hapus bayangan */
+}
+.header {
+  display: flex;
+  align-items: center;
+  margin-bottom: 30px;
+}
+.back-btn {
+  color: white;
+  text-decoration: none;
+  font-size: 24px;
+  margin-right: 15px;
+}
+.header h2 {
+  margin: 0;
+  font-size: 22px;
+}
+.info-card {
+  background: rgba(255, 255, 255, 0.1);
+  padding: 15px;
+  border-radius: 10px;
+  margin-bottom: 25px;
+}
+.info-card h3 {
+  margin: 0 0 5px 0;
+  font-size: 18px;
+}
+.info-card p {
+  margin: 0;
+  font-size: 14px;
+  color: #d1e0e0;
+}
+.section-title {
+  font-size: 16px;
+  font-weight: 600;
+  margin-bottom: 15px;
+  display: block;
+}
+
+/* Radio Button Kotak (Durasi) */
+.duration-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr; /* Membagi jadi 2 kolom sejajar */
+  gap: 20px; /* KUNCI: Memberi jarak 20px antar tombol agar tidak bertabrakan */
+  margin-bottom: 25px;
+}
+.duration-option {
+  position: relative;
+}
+.duration-option input {
+  display: none; /* Sembunyikan radio bawaan */
+}
+.duration-label {
+  padding: 12px 15px; /* Perkecil padding agar tombol tidak terlalu tebal */
+  text-align: center;
+  border-radius: 8px;
+  cursor: pointer;
+  background-color: #ffffff; /* Sesuaikan warna dasar tombolmu */
+  color: #114d4d;
+  font-weight: 500;
+  transition: 0.3s ease;
+}
+/* Pastikan efek saat dipilih (checked) tetap aman */
+.duration-option input[type="radio"]:checked + .duration-label {
+  background-color: #f19a4b; /* Warna oranye saat diklik */
+  color: white;
+}
+
+/* Form Input */
+.form-group {
+  margin-bottom: 20px;
+}
+.form-group textarea {
+  width: 100%;
+  padding: 15px;
+  border-radius: 10px;
+  border: none;
+  background: rgba(255, 255, 255, 0.9);
+  font-family: "Poppins", sans-serif;
+  resize: none;
+  box-sizing: border-box;
+}
+
+/* Escrow Banner */
+.escrow-banner {
+  background-color: #e6f9f9;
+  color: #114d4d;
+  padding: 15px;
+  border-radius: 10px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 30px;
+  font-size: 13px;
+}
+.escrow-banner span {
+  font-size: 24px;
+}
+
+/* Tombol Bayar */
+.btn-submit {
+  background-color: #f2994a;
+  color: white;
+  border: none;
+  width: 100%;
+  padding: 15px;
+  border-radius: 50px;
+  font-size: 16px;
+  font-weight: 700;
+  cursor: pointer;
+  transition: 0.3s;
+}
+.btn-submit:hover {
+  background-color: #e0893a;
+}
+
+.payment-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  gap: 10px;
+  margin-bottom: 20px;
+}
+.payment-option input {
+  display: none;
+}
+.payment-card {
+  border: 2px solid #eee;
+  padding: 15px;
+  border-radius: 12px;
+  text-align: center;
+  cursor: pointer;
+  transition: 0.3s;
+}
+.payment-option input:checked + .payment-card {
+  border-color: #114d4d;
+  background: #f4f9f9;
+  color: #114d4d;
+}
+.payment-card .icon {
+  display: block;
+  font-size: 20px;
+  margin-bottom: 5px;
+}

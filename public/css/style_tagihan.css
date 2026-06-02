@@ -1,0 +1,116 @@
+body {
+  background-color: #f5f5f5;
+  margin: 0;
+  font-family: "Poppins", sans-serif;
+}
+
+.invoice-card {
+  max-width: 1800px; /* Kunci utamanya di sini: melebarkan kotak hingga 800px */
+  width: 90%; /* Memastikan kotaknya fleksibel */
+  margin: 50px auto; /* Memberikan jarak dari atas dan otomatis rata tengah (auto) */
+  padding: 40px; /* Ruang bernapas di dalam kotak agar teks tidak mepet garis */
+  background: #ffffff;
+  border-radius: 15px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08); /* Memberi efek bayangan melayang yang elegan */
+}
+
+.invoice-header {
+  background-color: #114d4d;
+  color: white;
+  padding: 30px;
+  text-align: center;
+}
+
+.invoice-header h1 {
+  margin: 0;
+  font-size: 24px;
+}
+.invoice-header p {
+  margin: 5px 0 0;
+  opacity: 0.8;
+  font-size: 14px;
+}
+
+.invoice-body {
+  padding: 30px;
+}
+
+.info-section {
+  border-bottom: 1px dashed #ddd;
+  padding-bottom: 20px;
+  margin-bottom: 20px;
+}
+
+.info-row {
+  display: flex;
+  justify-content: space-between; /* Membuat label di kiri dan isi di kanan mentok */
+  padding: 15px 0;
+  border-bottom: 1px solid #eee;
+}
+
+.info-label {
+  color: #777;
+}
+.info-value {
+  font-weight: 600;
+  color: #333;
+}
+
+.total-section {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 30px;
+  padding-top: 20px;
+  border-top: 2px dashed #ccc;
+}
+
+.total-label {
+  font-size: 14px;
+  color: #555;
+}
+.total-amount {
+  display: block;
+  font-size: 28px;
+  font-weight: 700;
+  color: #114d4d;
+}
+
+.payment-instruction {
+  font-size: 13px;
+  background: #fff9e6;
+  padding: 15px;
+  border-left: 4px solid #f2994a;
+  border-radius: 4px;
+  color: #856404;
+}
+
+/* Styling Tombol Konfirmasi */
+.btn-confirm {
+  width: 100%;
+  background-color: #114d4d; /* Warna hijau gelap khas aplikasi kamu */
+  color: white;
+  padding: 15px;
+  border: none; /* Menghilangkan garis pinggir bawaan button */
+  border-radius: 10px;
+  font-size: 16px;
+  font-weight: 600;
+  font-family: "Poppins", sans-serif;
+  cursor: pointer; /* Mengubah kursor jadi tangan saat diarahkan */
+  transition: all 0.3s ease; /* Animasi halus saat transisi */
+  margin-top: 20px;
+  display: block;
+  text-align: center;
+}
+
+/* Efek saat tombol disorot (Hover) */
+.btn-confirm:hover {
+  background-color: #0d3b3b; /* Warna jadi sedikit lebih gelap */
+  transform: translateY(-2px); /* Tombol seolah naik sedikit */
+  box-shadow: 0 5px 15px rgba(17, 77, 77, 0.3); /* Tambah bayangan */
+}
+
+/* Efek saat tombol diklik (Active) */
+.btn-confirm:active {
+  transform: translateY(0); /* Tombol balik ke posisi semula */
+}

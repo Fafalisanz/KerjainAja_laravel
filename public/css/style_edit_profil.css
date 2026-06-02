@@ -1,0 +1,136 @@
+/* style_edit_profil.css */
+
+body {
+  background-color: #1a4f54; /* Background HIJAU untuk seluruh layar */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  margin: 0;
+}
+
+/* Kotak Form Putih di Tengah */
+.edit-profile-container {
+  background-color: #ffffff; /* Warna Form PUTIH */
+  width: 100%;
+  max-width: 500px;
+  padding: 30px;
+  border-radius: 15px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+}
+
+/* Sisanya kode untuk foto dan input yang sudah kamu buat... */
+.profile-preview {
+  width: 130px;
+  height: 130px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 4px solid #0c4b4a;
+}
+
+/* Container Utama Form */
+.edit-profile-container {
+  max-width: 500px;
+  margin: 50px auto;
+  padding: 30px;
+  background-color: #ffffff;
+  border: 1px solid #eee;
+  border-radius: 15px;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.05);
+  font-family: "Poppins", sans-serif;
+}
+
+.edit-profile-container h2 {
+  text-align: center;
+  color: #1a4a52;
+  margin-bottom: 25px;
+}
+
+/* Bagian Foto Profil */
+.profile-image-section {
+  text-align: center;
+  margin-bottom: 25px;
+}
+
+.profile-preview {
+  width: 130px;
+  height: 130px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 4px solid #0c4b4a;
+  margin-bottom: 10px;
+}
+
+.btn-upload-label {
+  display: inline-block;
+  cursor: pointer;
+  color: #0c4b4a;
+  font-weight: 700;
+  font-size: 14px;
+  transition: color 0.3s;
+}
+
+.btn-upload-label:hover {
+  color: #f2994a;
+}
+
+/* Bagian Input Form */
+.form-group {
+  margin-bottom: 20px;
+}
+
+.form-group label {
+  display: block;
+  font-weight: 600;
+  margin-bottom: 8px;
+  color: #333;
+}
+
+.form-control {
+  width: 100%;
+  padding: 12px;
+  border-radius: 8px;
+  border: 1px solid #ddd;
+  font-size: 15px;
+  transition: border-color 0.3s;
+}
+
+.form-control:focus {
+  outline: none;
+  border-color: #0c4b4a;
+}
+
+/* Tombol Simpan */
+.btn-save {
+  width: 100%;
+  padding: 12px;
+  background-color: #f2994a;
+  color: white;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  font-weight: 700;
+  font-size: 16px;
+  transition: all 0.3s ease;
+}
+
+.btn-save:hover {
+  background-color: #e68a39;
+  transform: translateY(-2px);
+  box-shadow: 0 5px 15px rgba(242, 153, 74, 0.3);
+}
+
+/* Link Kembali */
+.link-back {
+  display: block;
+  text-align: center;
+  margin-top: 20px;
+  color: #888;
+  text-decoration: none;
+  font-size: 14px;
+  transition: color 0.3s;
+}
+
+.link-back:hover {
+  color: #333;
+}
