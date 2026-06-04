@@ -93,12 +93,12 @@ function jalankanFilter(event, kategori) {
 // Dropdown Profil
 
 function toggleDropdown() {
-    document.getElementById("dropdownMenu").classList.toggle("show");
+    document.getElementById("profilMenu").classList.toggle("show");
 }
 
 document.addEventListener("click", function (e) {
     const dropdown = document.querySelector(".profile-dropdown");
     if (dropdown && !dropdown.contains(e.target)) {
-        document.getElementById("dropdownMenu").classList.remove("show");
+        document.getElementById("profilMenu").classList.remove("show");
     }
 });

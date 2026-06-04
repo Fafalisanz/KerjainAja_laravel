@@ -19,33 +19,46 @@
             <a href="#faq">FAQ</a>
         </nav>
         <div class="nav-actions">
-            @auth
-            <div class="profile-dropdown">
-             <img src="{{ asset('Images/default_profile.png') }}" 
-             alt="Profil" 
-             class="profile-img"
-             onclick="toggleDropdown()"
-             style="width:40px; height:40px; border-radius:50%; cursor:pointer;">
+@auth
+    <div class="profile-dropdown" style="display:flex; align-items:center; gap:10px;">
         
-        <div class="dropdown-menu" id="dropdownMenu">
+        {{-- Ganti sapaan --}}
+        <span class="sapaan-user">
+            @if(Auth::user()->role == 'mitra')
+                Halo, Mitra {{ Auth::user()->nama }}! 🦸
+            @else
+                Halo, {{ Auth::user()->nama }}! 👋
+            @endif
+        </span>
+
+        <img src="{{ asset('Images/profile/' . (Auth::user()->foto ?? 'default_profile.png')) }}"
+             onclick="toggleDropdown()"
+             style="width:55px; height:55px; border-radius:50%; cursor:pointer; object-fit:cover; border:2px solid #000000;">
+
+        <div class="profil-menu" id="profilMenu">
             <div class="dropdown-header">
                 <strong>{{ Auth::user()->nama }}</strong>
                 <small>{{ Auth::user()->email }}</small>
+                {{-- Tambahkan role di sini --}}
+                <small style="color:#000000; font-weight:600;">
+                    {{ Auth::user()->role == 'mitra' ? '🦸 Mitra' : ' Pencari Jasa' }}
+                </small>
             </div>
             <hr>
-            <a href="{{ route('profil') }}"> Edit Profil</a>
-            <a href="{{ route('pesanan') }}"> Pesanan Saya</a>
+            <a href="{{ route('profil') }}">✏️ Edit Profil</a>
+            <a href="#">📋 Pesanan Saya</a>
             <hr>
             <form action="{{ route('logout') }}" method="POST">
                 @csrf
-                <button type="submit"> Keluar</button>
+                <button type="submit">🚪 Keluar</button>
             </form>
         </div>
     </div>
-@else
-            <a href="{{ route('daftar') }}" class="btn-text">DAFTAR</a>
-            <a href="{{ route('login') }}" class="btn-masuk">MASUK</a>
-            @endauth
+    @else
+        <a href="{{ route('daftar') }}" class="btn-text">DAFTAR</a>
+        <a href="{{ route('login') }}" class="btn-masuk">MASUK</a>
+    @endauth
+    
         </div>
     </header>
 
@@ -59,7 +72,7 @@
             </p>
             <div class="hero-buttons">
                 <a href="#layanan" class="btn-primary">Cari Jasa Sekarang <span>&gt;</span></a>
-                <a href="#" class="btn-outline">Gabung Jadi Mitra <span>&gt;</span></a>
+                <a href="{{ route('mitra') }}" class="btn-outline">Gabung Jadi Mitra <span>&gt;</span></a>
             </div>
         </div>
         <div class="logo-image">

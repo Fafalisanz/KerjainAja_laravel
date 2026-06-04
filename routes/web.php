@@ -7,22 +7,32 @@ use App\Http\Controllers\PencarianController;
 use App\Http\Controllers\DetailController;
 use App\Http\Controllers\ChatController;
 use App\Http\Controllers\OrderController;
+use App\Http\Controllers\TagihanController;
+use App\Http\Controllers\ProfilController;
+use App\Http\Controllers\MitraController;
 
 // landing
 Route::get('/', [LandingController::class, 'index'])->name('home');
 
-//Pencarian
+// Pencarian
 Route::get('/pencarian', [PencarianController::class, 'index'])->name('pencarian');
 
-//Detail
+// Detail
 Route::get('/detail/{id}', [DetailController::class, 'index'])->name('detail');
 
-//Chat
+// Chat
 Route::get('/chat/{id}', [ChatController::class, 'index'])->name('chat');
 
-//Order
+// Order
 Route::get('/order/{id}', [OrderController::class, 'index'])->name('order');
 Route::post('/order/proses', [OrderController::class, 'proses'])->name('order.proses');
+
+// Tagihan
+Route::get('/tagihan/{id}', [TagihanController::class, 'index'])->name('tagihan');
+
+// Gabung_Mitra
+Route::get('/gabung-mitra', [MitraController::class, 'index'])->name('mitra');
+Route::post('/gabung-mitra', [MitraController::class, 'proses'])->name('mitra.proses');
 
 // Auth
 Route::get('/masuk', [AuthController::class, 'showLogin'])->name('login');
@@ -36,3 +46,9 @@ Route::middleware('auth')->group(function () {
     Route::get('/pesanan', function() { return view('pesanan'); })->name('pesanan');
 });
 
+// Edit_Profil
+Route::middleware('auth')->group(function () {
+    Route::get('/profil', [ProfilController::class, 'index'])->name('profil');
+    Route::put('/profil', [ProfilController::class, 'update'])->name('profil.update');
+    Route::delete('/profil', [ProfilController::class, 'hapus'])->name('profil.hapus');
+});
