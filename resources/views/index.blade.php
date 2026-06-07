@@ -36,22 +36,31 @@
              style="width:55px; height:55px; border-radius:50%; cursor:pointer; object-fit:cover; border:2px solid #000000;">
 
         <div class="profil-menu" id="profilMenu">
-            <div class="dropdown-header">
+            <<div class="dropdown-header">
                 <strong>{{ Auth::user()->nama }}</strong>
                 <small>{{ Auth::user()->email }}</small>
-                {{-- Tambahkan role di sini --}}
-                <small style="color:#000000; font-weight:600;">
-                    {{ Auth::user()->role == 'mitra' ? '🦸 Mitra' : ' Pencari Jasa' }}
+                <small style="font-weight:600; color:
+                    {{ Auth::user()->role == 'admin' ? '#dc3545' : 
+                    (Auth::user()->role == 'mitra' ? '#e65c00' : '#28a745') }}">
+                    {{ Auth::user()->role == 'admin' ? '👑 Admin' : 
+                    (Auth::user()->role == 'mitra' ? '🦸 Mitra' : '😊 Pencari Jasa') }}
                 </small>
             </div>
             <hr>
-            <a href="{{ route('profil') }}">✏️ Edit Profil</a>
-            <a href="#">📋 Pesanan Saya</a>
-            <hr>
-            <form action="{{ route('logout') }}" method="POST">
-                @csrf
-                <button type="submit">🚪 Keluar</button>
-            </form>
+                @if(Auth::user()->role == 'admin')
+                    <a href="{{ route('admin.dashboard') }}">👑 Dashboard Admin</a>
+                @endif
+                <a href="{{ route('profil') }}">✏️ Edit Profil</a>
+                @if(Auth::user()->role == 'mitra')
+                    <a href="{{ route('pesanan.masuk') }}">📬 Pesanan Masuk</a>
+                @else
+                    <a href="{{ route('pesanan.saya') }}">📋 Pesanan Saya</a>
+                @endif
+                <hr>
+                <form action="{{ route('logout') }}" method="POST">
+                    @csrf
+                    <button type="submit">🚪 Keluar</button>
+           </form>
         </div>
     </div>
     @else
@@ -161,7 +170,7 @@
                     <h3>{{ $row->nama_lengkap }}</h3>
                     <p class="job-tag">{{ $row->keahlian }}</p>
                     <p style="color: #666; font-size: 14px;">Siap membantu pengerjaan {{ $row->keahlian }} di area {{ $row->kota }}.</p>
-                    <a href="#" class="btn-detail">Lihat Profil</a>
+                    <a href="{{ route('detail', $row->id) }}" class="btn-detail">Lihat Profil</a>
                 </div>
             @endforeach
         </div>
@@ -271,7 +280,7 @@
                 <img src="{{ asset('Images/logo1.png') }}" alt="Logo KerjainAja" class="footer-logo">
                 <p>Platform jasa suruhan nomor 1. Apapun kebutuhanmu, serahkan pada pahlawan kami yang siap melayani dengan sepenuh hati.</p>
                 <div class="social-links">
-                    <a href="#"><img src="{{ asset('Images/icon-ig.png') }}" alt="Instagram"></a>
+                    <a href="https://www.instagram.com/fafalisanz?igsh=cWtyZ3hib2FuaGM1"><img src="{{ asset('Images/icon-ig.png') }}" alt="Instagram"></a>
                     <a href="#"><img src="{{ asset('Images/icon-facebook.png') }}" alt="Facebook"></a>
                 </div>
             </div>

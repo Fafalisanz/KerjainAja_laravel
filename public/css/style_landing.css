@@ -490,8 +490,9 @@ body {
 }
 /* --- Aturan Wrapper Testimoni --- */
 .testimoni-wrapper {
-    width: 100%;
-    overflow: hidden; /* Menyembunyikan kartu yang melewati layar */
+    width: 100vw;
+    margin-left: calc(-50vw + 50%);
+    overflow: hidden;
     padding: 40px 0;
 }
 
@@ -524,8 +525,7 @@ body {
 /* --- ANIMASI BARIS ATAS (Kanan ke Kiri) --- */
 .track-left,
 .track-top {
-    /* Kecepatan gerak diperlambat sedikit jadi 25s agar teks nyaman dibaca */
-    animation: scrollLeftToRight 15s linear infinite;
+    animation: scrollLeftToRight 20s linear infinite;
 }
 
 @keyframes scrollLeftToRight {
@@ -533,22 +533,18 @@ body {
         transform: translateX(0);
     }
     100% {
-        /* Menggunakan -50% agar looping berjalan mulus tanpa jeda kosong */
-        transform: translateX(-10%);
+        transform: translateX(-50%);
     }
 }
 
 /* --- ANIMASI BARIS BAWAH (Kiri ke Kanan) --- */
 .track-bottom {
-    /* Kecepatan gerak baris bawah (25 detik) */
-    animation: scrollRightToLeft 15s linear infinite;
+    animation: scrollRightToLeft 20s linear infinite;
 }
 
 @keyframes scrollRightToLeft {
     0% {
-        transform: translateX(
-            -10%
-        ); /* Mulai dari tengah agar jalannya ke kanan */
+        transform: translateX(-50%);
     }
     100% {
         transform: translateX(0);

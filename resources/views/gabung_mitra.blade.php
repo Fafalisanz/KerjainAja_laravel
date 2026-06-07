@@ -26,25 +26,26 @@
 
             <label>Nama Lengkap (Sesuai KTP):</label>
             <input type="text" name="nama_lengkap" required>
-            @error('nama_lengkap')
-                <span class="error-text">{{ $message }}</span>
-            @enderror
 
             <label>Nomor WhatsApp Aktif:</label>
             <input type="text" name="no_wa" required>
-            @error('no_wa')
-                <span class="error-text">{{ $message }}</span>
-            @enderror
 
             <label>Kota / Domisili:</label>
             <input type="text" name="kota" required>
-            @error('kota')
-                <span class="error-text">{{ $message }}</span>
-            @enderror
 
             <label>Keahlian:</label>
             <textarea name="keahlian" required></textarea>
-            @error('keahlian')
+
+            {{-- Tambahkan ini --}}
+            <label>Email:</label>
+            <input type="email" name="email" required>
+            @error('email')
+                <span class="error-text">{{ $message }}</span>
+            @enderror
+
+            <label>Password:</label>
+            <input type="password" name="password" required>
+            @error('password')
                 <span class="error-text">{{ $message }}</span>
             @enderror
 
@@ -99,20 +100,7 @@
                 window.location.href = '/';
             });
         </script>
-    @endif
-
-        <label>Email:</label>
-        <input type="email" name="email" required>
-        @error('email')
-            <span class="error-text">{{ $message }}</span>
-        @enderror
-
-        <label>Password:</label>
-        <input type="password" name="password" required>
-        @error('password')
-            <span class="error-text">{{ $message }}</span>
-        @enderror
-
+        @endif
     <script src="{{ asset('js/script_mitra.js') }}"></script>
 </body>
 </html>

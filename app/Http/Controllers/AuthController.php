@@ -14,21 +14,26 @@ class AuthController extends Controller
         return view('masuk');
     }
 
-    public function prosesLogin(Request $request)
-    {
-        $request->validate([
-            'email'    => 'required|email',
-            'password' => 'required',
-        ]);
+   public function prosesLogin(Request $request)
+{
+    $request->validate([
+        'email'    => 'required|email',
+        'password' => 'required',
+    ]);
 
-        if (Auth::attempt(['email' => $request->email, 'password' => $request->password])) {
-            $request->session()->regenerate();
-            return redirect()->route('home');
+    if (Auth::attempt(['email' => $request->email, 'password' => $request->password])) {
+        $request->session()->regenerate();
+        
+        // ← Tambahkan redirect sesuai role di sini
+        if (Auth::user()->role == 'admin') {
+            return redirect()->route('admin.dashboard');
         }
-
-        return back()->with('error', 'Email atau kata sandi salah.');
+        
+        return redirect()->route('home');
     }
 
+    return back()->with('error', 'Email atau kata sandi salah.');
+}
     public function showDaftar()
     {
         return view('daftar');

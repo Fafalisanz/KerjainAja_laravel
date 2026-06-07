@@ -10,6 +10,10 @@ use App\Http\Controllers\OrderController;
 use App\Http\Controllers\TagihanController;
 use App\Http\Controllers\ProfilController;
 use App\Http\Controllers\MitraController;
+use App\Http\Controllers\Admin\DashboardController;
+use App\Http\Controllers\Admin\MitraController as AdminMitraController;
+use App\Http\Controllers\Admin\PesananController as AdminPesananController;
+use App\Http\Controllers\Admin\LaporanController;
 
 // landing
 Route::get('/', [LandingController::class, 'index'])->name('home');
@@ -41,14 +45,28 @@ Route::get('/daftar', [AuthController::class, 'showDaftar'])->name('daftar');
 Route::post('/daftar', [AuthController::class, 'prosesDaftar'])->name('daftar.proses');
 Route::post('/logout', [AuthController::class, 'logout'])->name('logout');
 
+// Route yang butuh login
 Route::middleware('auth')->group(function () {
-    Route::get('/profil', function() { return view('profil'); })->name('profil');
-    Route::get('/pesanan', function() { return view('pesanan'); })->name('pesanan');
-});
-
-// Edit_Profil
-Route::middleware('auth')->group(function () {
+    // Profil
     Route::get('/profil', [ProfilController::class, 'index'])->name('profil');
     Route::put('/profil', [ProfilController::class, 'update'])->name('profil.update');
     Route::delete('/profil', [ProfilController::class, 'hapus'])->name('profil.hapus');
+
+    // Pesanan
+    Route::get('/pesanan-saya', [OrderController::class, 'pesananSaya'])->name('pesanan.saya');
+    Route::get('/pesanan-masuk', [OrderController::class, 'pesananMasuk'])->name('pesanan.masuk');
 });
+
+// Admin
+Route::prefix('admin')
+    ->middleware(['auth', 'admin'])
+    ->name('admin.')
+    ->group(function () {
+        Route::get('/', [DashboardController::class, 'index'])->name('dashboard');
+        Route::get('/mitra', [AdminMitraController::class, 'index'])->name('mitra');
+        Route::put('/mitra/{id}/approve', [AdminMitraController::class, 'approve'])->name('mitra.approve');
+        Route::put('/mitra/{id}/reject', [AdminMitraController::class, 'reject'])->name('mitra.reject');
+        Route::get('/pesanan', [AdminPesananController::class, 'index'])->name('pesanan');
+        Route::get('/laporan', [LaporanController::class, 'index'])->name('laporan');
+        Route::get('/laporan/pdf', [LaporanController::class, 'exportPdf'])->name('laporan.pdf');
+    });

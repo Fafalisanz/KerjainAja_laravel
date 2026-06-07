@@ -26,6 +26,7 @@
         <form action="{{ route('order.proses') }}" method="POST">
             @csrf
             <input type="hidden" name="nama_pekerja" value="{{ $nama_mitra }}">
+            <input type="hidden" name="mitra_id" value="{{ $data->id }}">
 
             <span class="section-title">Pilih Durasi Pengerjaan</span>
             <div class="duration-grid">

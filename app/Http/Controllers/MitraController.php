@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Auth;
 use App\Models\User;
 
 class MitraController extends Controller
@@ -38,7 +39,7 @@ class MitraController extends Controller
         $selfie->move(public_path('uploads'), $namaSelfie);
 
         // Simpan ke tabel users dengan role mitra
-        User::create([
+       $user = User::create([
             'nama'     => $request->nama_lengkap,
             'email'    => $request->email,
             'password' => Hash::make($request->password),
@@ -47,6 +48,7 @@ class MitraController extends Controller
 
         // Simpan ke tabel mitra
         DB::table('mitra')->insert([
+            'user_id'        => $user->id,
             'nama_lengkap'   => $request->nama_lengkap,
             'no_wa'          => $request->no_wa,
             'kota'           => $request->kota,
@@ -55,6 +57,8 @@ class MitraController extends Controller
             'foto_selfie'    => $namaSelfie,
             'tanggal_daftar' => now(),
         ]);
+
+        Auth::login($user);
 
         return redirect()->route('home')
                          ->with('success', 'Pendaftaran mitra berhasil! Silakan login.');
