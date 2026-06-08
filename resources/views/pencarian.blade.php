@@ -78,9 +78,9 @@
         </div>
 
         {{-- PAGINATION --}}
-       <div class="pagination-wrapper">
-    {{ $mitras->links('pagination::simple-bootstrap-4') }}
-</div>
+        <div class="pagination-wrapper">
+            {{ $mitras->links() }}
+        </div>
 
     </div>
     <script src="{{ asset('js/pencarian.js') }}"></script>

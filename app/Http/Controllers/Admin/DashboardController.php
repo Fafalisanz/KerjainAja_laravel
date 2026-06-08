@@ -26,12 +26,24 @@ class DashboardController extends Controller
                             ->limit(5)
                             ->get();
 
-        // Data grafik pesanan per hari (7 hari terakhir)
-                $grafik = DB::table('pesanan')
-                            ->selectRaw('DATE(tanggal_pesan) as tanggal, COUNT(*) as total')
-                            ->groupBy('tanggal')
-                            ->orderBy('tanggal')
-                            ->get();
+        // Data grafik pesanan per hari (7 hari terakhir) - dengan filter
+        $grafikRaw = DB::table('pesanan')
+                        ->selectRaw('DATE(tanggal_pesan) as tanggal, COUNT(*) as total')
+                        ->where('tanggal_pesan', '>=', now()->subDays(6)->startOfDay())
+                        ->groupBy('tanggal')
+                        ->orderBy('tanggal')
+                        ->get()
+                        ->keyBy('tanggal');
+
+        // Lengkapi semua 7 hari meski tidak ada pesanan (agar grafik tidak kosong)
+        $grafik = collect();
+        for ($i = 6; $i >= 0; $i--) {
+            $tgl = now()->subDays($i)->format('Y-m-d');
+            $grafik->push((object)[
+                'tanggal' => now()->subDays($i)->locale('id')->isoFormat('D MMM'),
+                'total'   => $grafikRaw->has($tgl) ? $grafikRaw[$tgl]->total : 0,
+            ]);
+        }
 
         return view('admin.dashboard', compact('stats', 'pesanan_terbaru', 'mitra_terbaru', 'grafik'));
     }

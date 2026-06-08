@@ -33,6 +33,7 @@ Route::post('/order/proses', [OrderController::class, 'proses'])->name('order.pr
 
 // Tagihan
 Route::get('/tagihan/{id}', [TagihanController::class, 'index'])->name('tagihan');
+Route::post('/tagihan/{id}/konfirmasi', [TagihanController::class, 'konfirmasi'])->name('tagihan.konfirmasi');
 
 // Gabung_Mitra
 Route::get('/gabung-mitra', [MitraController::class, 'index'])->name('mitra');
@@ -69,4 +70,6 @@ Route::prefix('admin')
         Route::get('/pesanan', [AdminPesananController::class, 'index'])->name('pesanan');
         Route::get('/laporan', [LaporanController::class, 'index'])->name('laporan');
         Route::get('/laporan/pdf', [LaporanController::class, 'exportPdf'])->name('laporan.pdf');
+        Route::put('/pesanan/{id}/selesai', [AdminPesananController::class, 'selesai'])->name('pesanan.selesai');
+Route::put('/pesanan/{id}/batal', [AdminPesananController::class, 'batal'])->name('pesanan.batal');
     });

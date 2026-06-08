@@ -31,9 +31,9 @@
     </div>
 </div>
 
-{{-- Grafik --}}
+{{-- Grafik Bar Chart --}}
 <div class="card">
-    <h3>📈 Pesanan 7 Hari Terakhir</h3>
+    <h3>📊 Pesanan 7 Hari Terakhir</h3>
     <canvas id="grafikPesanan" height="80"></canvas>
 </div>
 
@@ -92,10 +92,48 @@
     </div>
 
 </div>
+
 <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 <script>
-    const labels = @json($grafik->pluck('tanggal'));
-    const data   = @json($grafik->pluck('total'));
+const labels = @json($grafik->pluck('tanggal'));
+const data   = @json($grafik->pluck('total'));
+
+const ctx = document.getElementById('grafikPesanan').getContext('2d');
+new Chart(ctx, {
+    type: 'bar',
+    data: {
+        labels: labels,
+        datasets: [{
+            label: 'Jumlah Pesanan',
+            data: data,
+            backgroundColor: 'rgba(230, 92, 0, 0.7)',
+            borderColor: '#e65c00',
+            borderWidth: 2,
+            borderRadius: 8,
+            borderSkipped: false,
+        }]
+    },
+    options: {
+        responsive: true,
+        plugins: {
+            legend: { display: false },
+            tooltip: {
+                callbacks: {
+                    label: (ctx) => ` ${ctx.parsed.y} pesanan`
+                }
+            }
+        },
+        scales: {
+            y: {
+                beginAtZero: true,
+                ticks: { stepSize: 1 },
+                grid: { color: 'rgba(0,0,0,0.05)' }
+            },
+            x: {
+                grid: { display: false }
+            }
+        }
+    }
+});
 </script>
-<script src="{{ asset('js/script_admin.js') }}"></script>
 @endsection

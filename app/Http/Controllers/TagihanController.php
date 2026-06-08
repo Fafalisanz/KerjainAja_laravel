@@ -28,4 +28,13 @@ class TagihanController extends Controller
 
         return view('tagihan', compact('data', 'instruksi'));
     }
+
+    public function konfirmasi(string $id)
+    {
+        DB::table('pesanan')
+            ->where('id', $id)
+            ->update(['status' => 'Proses Verifikasi']);
+
+        return response()->json(['success' => true]);
+    }
 }

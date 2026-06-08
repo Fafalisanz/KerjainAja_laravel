@@ -209,3 +209,57 @@ tr:hover td {
     display: flex;
     justify-content: center;
 }
+
+/* --- PERBAIKAN STRUKTUR PAGINATION UL/LI --- */
+.pagination-wrapper {
+    display: flex;
+    justify-content: center;
+    margin-top: 40px;
+    margin-bottom: 20px;
+    position: relative;
+    z-index: 10;
+}
+
+.pagination-wrapper .pagination {
+    display: flex;
+    gap: 10px;
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.pagination-wrapper .page-item .page-link {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 10px 20px;
+    border-radius: 20px;
+    font-size: 13px;
+    font-family: "Poppins", sans-serif;
+    text-decoration: none;
+    border: 1px solid #e0e0e0;
+    color: #444;
+    background: white;
+    transition: all 0.2s;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.05);
+}
+
+.pagination-wrapper .page-item.active .page-link {
+    background: #0d4a48;
+    color: white;
+    border-color: #0d4a48;
+}
+
+.pagination-wrapper .page-item:not(.disabled):not(.active) .page-link:hover {
+    background: #0d4a48;
+    color: white;
+    border-color: #0d4a48;
+}
+
+.pagination-wrapper .page-item.disabled .page-link {
+    background: #f4f7f6;
+    color: #999;
+    border-color: #ddd;
+    cursor: not-allowed;
+    box-shadow: none;
+}

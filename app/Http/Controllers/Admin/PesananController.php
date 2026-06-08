@@ -15,4 +15,16 @@ class PesananController extends Controller
 
         return view('admin.pesanan', compact('pesanans'));
     }
+
+    public function selesai(string $id)
+    {
+        DB::table('pesanan')->where('id', $id)->update(['status' => 'Selesai']);
+        return back()->with('success', 'Pesanan ditandai selesai.');
+    }
+
+    public function batal(string $id)
+    {
+        DB::table('pesanan')->where('id', $id)->update(['status' => 'Dibatalkan']);
+        return back()->with('success', 'Pesanan dibatalkan.');
+    }
 }
