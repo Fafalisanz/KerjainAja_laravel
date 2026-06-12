@@ -1,225 +1,228 @@
+/* 1. GLOBAL STYLES & RESET */
 * {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-  font-family: "Poppins", sans-serif;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: "Poppins", sans-serif;
 }
 
 body {
-  background-color: #ffffff;
+    background-color: #ffffff;
 }
 
 .auth-wrapper {
-  display: flex;
-  min-height: 100vh; /* Mengambil tinggi layar penuh */
+    display: flex;
+    min-height: 100vh; /* Mengambil tinggi layar penuh */
 }
 
-/* --- SISI KIRI (ILUSTRASI) --- */
+/* 2. LAYOUT: SISI KIRI (ILUSTRASI) */
 .auth-left {
-  flex: 1;
-  background-color: #1a4f54; /* Hijau KerjainAja */
-  color: white;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  padding: 40px;
-  text-align: center;
+    flex: 1;
+    background-color: #1a4f54; /* Hijau KerjainAja */
+    color: white;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 40px;
+    text-align: center;
 }
 
 .auth-img {
-  max-width: 80%;
-  margin-bottom: 30px;
-  height: 300px;
+    max-width: 80%;
+    margin-bottom: 30px;
+    height: 300px;
 }
 
 .auth-left h2 {
-  font-size: 2em;
-  margin-bottom: 15px;
+    font-size: 2em;
+    margin-bottom: 15px;
 }
 
 .auth-left p {
-  color: #e0e0e0;
-  font-size: 1.1em;
-  max-width: 400px;
+    color: #e0e0e0;
+    font-size: 1.1em;
+    max-width: 400px;
 }
 
-/* --- SISI KANAN (FORM) --- */
+/* 3. LAYOUT: SISI KANAN (FORM UTAMA) */
 .auth-right {
-  flex: 1;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  padding: 40px;
-  overflow-y: auto;
+    flex: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 40px;
+    overflow-y: auto;
 }
 
 .auth-form-container {
-  width: 100%;
-  max-width: 450px;
+    width: 100%;
+    max-width: 450px;
 }
 
 .auth-header {
-  margin-bottom: 30px;
+    margin-bottom: 30px;
 }
 
 .back-link {
-  color: #888;
-  text-decoration: none;
-  font-size: 14px;
-  display: inline-block;
-  margin-bottom: 25px;
+    color: #888;
+    text-decoration: none;
+    font-size: 14px;
+    display: inline-block;
+    margin-bottom: 25px;
 }
 
 .back-link:hover {
-  color: #1a4f54;
+    color: #1a4f54;
 }
 
 .auth-header h2 {
-  color: #1a4f54;
-  font-size: 2em;
-  font-weight: 700;
+    color: #1a4f54;
+    font-size: 2em;
+    font-weight: 700;
 }
 
-/* --- INPUT FORM --- */
+/* 4. COMPONENT: INPUT GROUP */
 .input-group {
-  margin-bottom: 20px;
-  display: flex;
-  flex-direction: column;
+    margin-bottom: 20px;
+    display: flex;
+    flex-direction: column;
 }
 
 .input-group label {
-  font-size: 14px;
-  font-weight: 600;
-  color: #333;
-  margin-bottom: 8px;
+    font-size: 14px;
+    font-weight: 600;
+    color: #333;
+    margin-bottom: 8px;
 }
 
 .input-group input {
-  padding: 15px;
-  border: 1px solid #ccc;
-  border-radius: 8px;
-  font-size: 14px;
-  outline: none;
-  transition: border-color 0.3s;
+    padding: 15px;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    font-size: 14px;
+    outline: none;
+    transition: border-color 0.3s;
 }
 
 .input-group input:focus {
-  border-color: #1a4f54;
+    border-color: #1a4f54;
 }
 
-/* --- TOMBOL --- */
+/* 5. COMPONENT: BUTTONS & OPTIONS */
 .form-options {
-  text-align: right;
-  margin-bottom: 20px;
+    text-align: right;
+    margin-bottom: 20px;
 }
 
 .forgot-password {
-  color: #1a4f54;
-  text-decoration: none;
-  font-size: 14px;
-  font-weight: 600;
+    color: #1a4f54;
+    text-decoration: none;
+    font-size: 14px;
+    font-weight: 600;
 }
 
 .btn-primary {
-  width: 100%;
-  padding: 15px;
-  background-color: #1a4f54;
-  color: white;
-  border: none;
-  border-radius: 8px;
-  font-size: 16px;
-  font-weight: 600;
-  cursor: pointer;
-  transition: background-color 0.3s;
+    width: 100%;
+    padding: 15px;
+    background-color: #1a4f54;
+    color: white;
+    border: none;
+    border-radius: 8px;
+    font-size: 16px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background-color 0.3s;
 }
 
 .btn-primary:hover {
-  background-color: #133a3e;
+    background-color: #133a3e;
 }
 
-/* --- PEMISAH (ATAU) --- */
+/* Pemisah Or / Atau */
 .divider {
-  text-align: center;
-  margin: 25px 0;
-  position: relative;
+    text-align: center;
+    margin: 25px 0;
+    position: relative;
 }
 
 .divider::before {
-  content: "";
-  position: absolute;
-  top: 50%;
-  left: 0;
-  width: 100%;
-  height: 1px;
-  background-color: #eee;
-  z-index: 1;
+    content: "";
+    position: absolute;
+    top: 50%;
+    left: 0;
+    width: 100%;
+    height: 1px;
+    background-color: #eee;
+    z-index: 1;
 }
 
 .divider span {
-  background-color: #fff;
-  padding: 0 15px;
-  color: #888;
-  font-size: 14px;
-  position: relative;
-  z-index: 2;
+    background-color: #fff;
+    padding: 0 15px;
+    color: #888;
+    font-size: 14px;
+    position: relative;
+    z-index: 2;
 }
 
-/* --- TOMBOL GOOGLE --- */
+/* Tombol Pihak Ketiga (Google) */
 .btn-google {
-  width: 100%;
-  padding: 15px;
-  background-color: white;
-  color: #333;
-  border: 1px solid #ccc;
-  border-radius: 8px;
-  font-size: 16px;
-  font-weight: 600;
-  cursor: pointer;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: 10px;
-  margin-bottom: 25px;
+    width: 100%;
+    padding: 15px;
+    background-color: white;
+    color: #333;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    font-size: 16px;
+    font-weight: 600;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    margin-bottom: 25px;
 }
 
 .btn-google img {
-  width: 20px;
+    width: 20px;
 }
 
 .btn-google:hover {
-  background-color: #f9f9f9;
+    background-color: #f9f9f9;
 }
 
-/* --- FOOTER FORM --- */
+/* Footer Tautan Pindah Halaman */
 .auth-footer {
-  text-align: center;
-  font-size: 15px;
-  color: #555;
+    text-align: center;
+    font-size: 15px;
+    color: #555;
 }
 
 .auth-footer a {
-  color: #f28b00; /* Warna orange KerjainAja */
-  text-decoration: none;
-  font-weight: 700;
+    color: #f28b00; /* Warna orange KerjainAja */
+    text-decoration: none;
+    font-weight: 700;
 }
+
+/* 6. RESPONSIVE MEDIA QUERIES */
 
 /* Media Query agar Form Masuk/Daftar rapi di HP */
 @media screen and (max-width: 768px) {
-  .auth-wrapper {
-    flex-direction: column; /* Tumpuk ke bawah */
-  }
+    .auth-wrapper {
+        flex-direction: column; /* Tumpuk ke bawah */
+    }
 
-  .auth-left {
-    display: none; /* Sembunyikan bagian ilustrasi di HP agar fokus ke form */
-  }
+    .auth-left {
+        display: none; /* Sembunyikan bagian ilustrasi di HP agar fokus ke form */
+    }
 
-  .auth-right {
-    padding: 20px;
-  }
+    .auth-right {
+        padding: 20px;
+    }
 
-  .auth-form-container {
-    padding: 20px;
-    box-shadow: none; /* Hilangkan bayangan agar lebih ringan di HP */
-  }
+    .auth-form-container {
+        padding: 20px;
+        box-shadow: none; /* Hilangkan bayangan agar lebih ringan di HP */
+    }
 }

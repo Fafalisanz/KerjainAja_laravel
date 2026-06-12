@@ -1,151 +1,136 @@
-/* --- FUNGSI WAJIB UNTUK MULTI-STEP --- */
-.form-step {
-  display: none;
+/* 1. GLOBAL STYLES & ANIMATION MIGRATION */
+body {
+    font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+    background-color: #0d4a48;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    margin: 0;
+    padding: 20px;
+    box-sizing: border-box;
 }
+
+/* Fungsi Wajib Untuk Multi-Step */
+.form-step {
+    display: none;
+}
+
 .form-step.active {
-  display: block;
-  animation: fadeIn 0.4s ease-in-out; /* Tambahan animasi halus saat ganti halaman */
+    display: block;
+    animation: fadeIn 0.4s ease-in-out; /* Tambahan animasi halus saat ganti halaman */
 }
 
 @keyframes fadeIn {
-  from {
-    opacity: 0;
-    transform: translateY(10px);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
+    from {
+        opacity: 0;
+        transform: translateY(10px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
 }
 
-/* --- TAMPILAN (STYLING) DESAIN UI --- */
-body {
-  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
-  background-color: #0d4a48;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  min-height: 100vh;
-  margin: 0;
-  padding: 20px;
-  box-sizing: border-box;
-}
-
-/* Kotak Form Utama */
+/* 2. LAYOUT: CONTAINERS & MASCOT PLACEMENT */
 form {
-  background: #ffffff;
-  width: 100%;
-  max-width: 500px;
-  padding: 40px;
-  border-radius: 12px;
-  box-shadow: 0px 8px 20px rgba(0, 0, 0, 0.05);
-  position: relative;
-  z-index: 10; /* Pastikan form ada di lapisan paling depan */
+    background: #ffffff;
+    width: 100%;
+    max-width: 500px;
+    padding: 40px;
+    border-radius: 12px;
+    box-shadow: 0px 8px 20px rgba(0, 0, 0, 0.05);
+    position: relative;
+    z-index: 2; /* Pastikan form kamu berada di depan maskot */
 }
 
 .maskot-form {
-  position: fixed;
-  bottom: 5px;
-  right: 5%;
-  width: 250px;
-  z-index: 100;
-  pointer-events: none; /* SUPER PENTING: Supaya kalau menutupi tombol form, tombolnya tetap bisa diklik tembus! */
+    position: fixed;
+    bottom: 5px;
+    right: 5%;
+    width: 250px;
+    z-index: 100;
+    pointer-events: none; /* SUPER PENTING: Supaya kalau menutupi tombol form, tombolnya tetap bisa diklik tembus! */
 }
 
-/* Pastikan form kamu berada di depan maskot */
-form {
-  position: relative;
-  z-index: 2;
-}
-
-/* Kotak Form Utama */
-form {
-  background: #ffffff;
-  width: 100%;
-  max-width: 500px;
-  padding: 40px;
-  border-radius: 12px;
-  box-shadow: 0px 8px 20px rgba(0, 0, 0, 0.05);
-}
-
+/* 3. COMPONENT: TYPOGRAPHY & INPUT FIELDS */
 h2 {
-  color: #0c4b4a; /* Warna hijau tosca andalanmu */
-  margin-top: 0;
-  margin-bottom: 25px;
-  text-align: center;
+    color: #0c4b4a; /* Warna hijau tosca andalanmu */
+    margin-top: 0;
+    margin-bottom: 25px;
+    text-align: center;
 }
 
-/* Gaya untuk Label dan Input */
 label {
-  font-weight: 600;
-  color: #333;
-  display: block;
-  margin-bottom: 8px;
-  font-size: 14px;
+    font-weight: 600;
+    color: #333;
+    display: block;
+    margin-bottom: 8px;
+    font-size: 14px;
 }
 
 input[type="text"],
 textarea,
 input[type="file"] {
-  width: 100%;
-  padding: 12px;
-  margin-bottom: 20px;
-  border: 1px solid #ccc;
-  border-radius: 8px;
-  box-sizing: border-box;
-  font-size: 14px;
+    width: 100%;
+    padding: 12px;
+    margin-bottom: 20px;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    box-sizing: border-box;
+    font-size: 14px;
 }
 
 textarea {
-  resize: vertical;
-  min-height: 100px;
+    resize: vertical;
+    min-height: 100px;
 }
 
 input:focus,
 textarea:focus {
-  border-color: #0c4b4a;
-  outline: none;
-  box-shadow: 0 0 5px rgba(12, 75, 74, 0.2);
+    border-color: #0c4b4a;
+    outline: none;
+    box-shadow: 0 0 5px rgba(12, 75, 74, 0.2);
 }
 
-/* --- GAYA UNTUK TOMBOL --- */
+/* 4. COMPONENT: BUTTON ACTION GROUPS */
 .btn-group {
-  display: flex;
-  gap: 15px;
-  margin-top: 10px;
+    display: flex;
+    gap: 15px;
+    margin-top: 10px;
 }
 
 button {
-  flex: 1;
-  padding: 12px;
-  border: none;
-  border-radius: 8px;
-  font-size: 15px;
-  font-weight: bold;
-  cursor: pointer;
-  transition: 0.3s;
+    flex: 1;
+    padding: 12px;
+    border: none;
+    border-radius: 8px;
+    font-size: 15px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: 0.3s;
 }
 
 /* Tombol Next / Submit (Hijau) */
 .btn-next,
 .btn-submit {
-  background-color: #0c4b4a;
-  color: white;
+    background-color: #0c4b4a;
+    color: white;
 }
 
 .btn-next:hover,
 .btn-submit:hover {
-  background-color: #083837;
+    background-color: #083837;
 }
 
 /* Tombol Kembali (Putih garis hijau) */
 .btn-prev {
-  background-color: transparent;
-  color: #0c4b4a;
-  border: 2px solid #0c4b4a;
+    background-color: transparent;
+    color: #0c4b4a;
+    border: 2px solid #0c4b4a;
 }
 
 .btn-prev:hover {
-  background-color: #f0f5f5;
+    background-color: #f0f5f5;
 }

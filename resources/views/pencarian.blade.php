@@ -4,15 +4,24 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Pencarian Jasa - KerjainAja</title>
+    
+    {{-- Google Web Fonts & External Search Stylesheet Definition --}}
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="{{ asset('css/style_pencarian.css') }}">
 </head>
 <body>
+
+    {{-- KONTAINER UTAMA HALAMAN ETALASE HASIL PENCARIAN JASA --}}
     <div class="container">
+        
+        {{-- ================= BARIS HEADER MODERN KONTROL UTAMA ================= --}}
         <div class="header-pencarian-modern">
             <div class="top-controls">
+                
+                {{-- Tombol Navigasi Kembali ke Beranda --}}
                 <a href="{{ route('home') }}" class="back-link-modern">← Kembali</a>
                 
+                {{-- Form Input Pencarian Kata Kunci Inline --}}
                 <div class="search-box-inline">
                     <form action="{{ route('pencarian') }}" method="GET">
                         <input type="text" name="keyword" 
@@ -23,6 +32,7 @@
                     </form>
                 </div>
 
+                {{-- Form Dropdown Penyaringan (Filter) Wilayah Kota --}}
                 <div class="filter-box">
                     <form action="{{ route('pencarian') }}" method="GET" id="form-wilayah">
                         <input type="hidden" name="keyword" value="{{ $keyword }}">
@@ -42,6 +52,7 @@
 
             <hr class="garis-pembatas">
 
+            {{-- Baris Informasi Parameter Kata Kunci & Metadata Lokasi Sensor --}}
             <div class="results-info">
                 <div>
                     <h2 class="judul-hasil">
@@ -55,6 +66,7 @@
             </div>
         </div>
 
+        {{-- ================= GRID LAYOUT KATALOG KARTU MITRA ================= --}}
         <div class="card-grid">
             @forelse($mitras as $row)
                 <div class="card" data-wilayah="{{ $row->kota }}">
@@ -71,18 +83,22 @@
                     </a>
                 </div>
             @empty
+                {{-- Tampilan Informasi Khusus Jika Keyword Jasa Tidak Ditemukan --}}
                 <p style="text-align:center; grid-column: 1 / -1; color: #666;">
                     Maaf, jasa/keahlian <b>"{{ $keyword }}"</b> belum tersedia saat ini.
                 </p>
             @endforelse
         </div>
 
-        {{-- PAGINATION --}}
+        {{-- ================= LINK NAVIGASI SYSTEM PAGINATION ================= --}}
         <div class="pagination-wrapper">
             {{ $mitras->links() }}
         </div>
 
     </div>
+    
+    {{-- Pemuatan Skrip Logika Deteksi Geolocation & Filter Wilayah --}}
     <script src="{{ asset('js/pencarian.js') }}"></script>
+    
 </body>
 </html>

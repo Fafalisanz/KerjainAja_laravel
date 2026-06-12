@@ -8,6 +8,7 @@ return new class extends Migration
 {
     public function up(): void
     {
+        // Membuat tabel mitra untuk menyimpan profil detail berkas pendaftaran mitra
         Schema::create('mitra', function (Blueprint $table) {
             $table->id();
             $table->unsignedBigInteger('user_id')->nullable();
@@ -24,6 +25,7 @@ return new class extends Migration
 
     public function down(): void
     {
+        // Menghapus tabel mitra saat melakukan rollback migration
         Schema::dropIfExists('mitra');
     }
 };

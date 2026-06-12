@@ -1,25 +1,32 @@
+/* 3. KONFIGURASI GRAFIK PESANAN (CHART.JS INTERFACE) */
 new Chart(document.getElementById("grafikPesanan"), {
-    type: "line",
+    type: "line", // Menentukan tipe grafik berupa garis (line chart)
     data: {
-        labels: labels,
+        labels: labels, // Menampung array data tanggal/hari pada sumbu X
         datasets: [
             {
                 label: "Jumlah Pesanan",
-                data: data,
-                borderColor: "#e65c00",
-                backgroundColor: "rgba(230,92,0,0.1)",
-                tension: 0.4,
-                fill: true,
+                data: data, // Menampung array angka total pesanan pada sumbu Y
+                borderColor: "#e65c00", // Warna garis grafik (orange khas aplikasi)
+                backgroundColor: "rgba(230,92,0,0.1)", // Warna latar area di bawah garis
+                tension: 0.4, // Membuat garis grafik melengkung halus (smooth line)
+                fill: true, // Mengaktifkan efek warna background di bawah garis
             },
         ],
     },
     options: {
-        responsive: true,
-        plugins: { legend: { display: false } },
+        responsive: true, // Membuat ukuran grafik otomatis menyesuaikan lebar layar (fleksibel)
+        plugins: {
+            legend: {
+                display: false, // Menyembunyikan kotak label penanda dataset di atas grafik
+            },
+        },
         scales: {
             y: {
-                beginAtZero: true,
-                ticks: { stepSize: 1 },
+                beginAtZero: true, // Memaksa grafik selalu memulai angka sumbu Y dari angka 0
+                ticks: {
+                    stepSize: 1, // Mengatur jarak kelipatan angka pada sumbu Y sebesar 1 poin
+                },
             },
         },
     },

@@ -1,3 +1,4 @@
+/* 1. GLOBAL STYLES & RESET */
 * {
     margin: 0;
     padding: 0;
@@ -25,7 +26,7 @@ body {
     color: #1a4a52; /* Warna teks dominan (teal gelap) */
 }
 
-/* --- NAVBAR --- */
+/* 2. LAYOUT: COMPONENT NAVBAR */
 .navbar {
     display: flex;
     justify-content: space-between;
@@ -35,12 +36,9 @@ body {
 }
 
 .logo img {
-    height: 40px; /*ukuran logo */
+    height: 40px; /* ukuran logo */
 }
 
-/* =========================================
-   STYLE UNTUK MENU NAVIGASI (TENGAH)
-   ========================================= */
 .navbar nav {
     display: flex;
     gap: 35px; /* Mengatur jarak antar tulisan menu */
@@ -56,7 +54,6 @@ body {
     transition: color 0.3s ease; /* Efek halus saat warna berubah */
 }
 
-/* Efek saat mouse diarahkan (hover) ke menu */
 .navbar nav a:hover {
     color: #e65c00; /* Berubah menjadi warna oranye seperti tombol saat disentuh mouse */
 }
@@ -86,7 +83,7 @@ body {
     white-space: nowrap;
 }
 
-/* --- PROFILE DROPDOWN --- */
+/* Profile Dropdown Menu */
 .profile-dropdown {
     position: relative;
 }
@@ -159,7 +156,6 @@ body {
     display: block;
 }
 
-/* --- PROFILE IMAGE --- */
 .profile-img {
     width: 500px;
     height: 500px;
@@ -169,6 +165,7 @@ body {
     border: 2px solid #000000;
 }
 
+/* Tombol Aksi Navigasi */
 .btn-text {
     text-decoration: none;
     color: #e65c00;
@@ -192,7 +189,7 @@ body {
     font-weight: 700;
 }
 
-/* --- HERO SECTION --- */
+/* 3. LAYOUT: COMPONENT HERO SECTION */
 .hero {
     display: flex;
     justify-content: space-between;
@@ -235,7 +232,6 @@ body {
     gap: 20px;
 }
 
-/* Gaya dasar untuk semua tombol di Hero */
 .btn-primary,
 .btn-outline {
     text-decoration: none;
@@ -247,14 +243,12 @@ body {
     gap: 10px;
 }
 
-/* Khusus Tombol Orange */
 .btn-primary {
     background-color: #e65c00;
     color: white;
     box-shadow: 0 4px 6px rgba(230, 92, 0, 0.3);
 }
 
-/* Tombol Outline (Garis pinggir) */
 .btn-outline {
     text-decoration: none;
     background-color: transparent;
@@ -276,6 +270,7 @@ body {
     transform: translateY(-3px);
     box-shadow: 0 5px 15px rgba(12, 75, 74, 0.3);
 }
+
 .hero-image {
     flex: 1;
     display: flex;
@@ -287,17 +282,15 @@ body {
     height: auto;
 }
 
-/* page 2*/
-/* --- VISI SECTION --- */
+/* 4. LAYOUT: COMPONENT VISI & AUTO-SCROLL CARDS */
 .visi {
-    background-color: #1a4a52; /* Warna dasar  */
+    background-color: #1a4a52; /* Warna dasar */
     position: relative;
     padding: 80px 8%;
     text-align: center;
     overflow: hidden; /* Mencegah gambar background keluar batas */
 }
 
-/* Pengaturan Gambar Background */
 .visi-bg {
     position: absolute;
     top: 50%;
@@ -309,7 +302,6 @@ body {
     pointer-events: none; /* Agar gambar tidak menghalangi klik */
 }
 
-/* Pengaturan Teks agar di atas gambar background */
 .visi-content {
     position: relative;
     z-index: 1;
@@ -338,7 +330,6 @@ body {
     color: #e0e0e0;
 }
 
-/* Pengaturan Kartu Auto-Scroll */
 .cards-wrapper {
     position: relative;
     z-index: 1;
@@ -350,16 +341,14 @@ body {
     display: flex;
     gap: 20px;
     width: max-content; /* Membiarkan lebar container memanjang sesuai jumlah kartu */
-    /* Menjalankan animasi bernama 'scroll' selama 25 detik, kecepatan stabil, tanpa henti */
+    /* Menjalankan animasi bernama 'scroll' selama 15 detik, kecepatan stabil, tanpa henti */
     animation: scrollCards 15s linear infinite;
 }
 
-/* Trik UX: Saat mouse diarahkan ke kartu, animasinya berhenti agar mudah dibaca */
 .cards-container:hover {
     animation-play-state: paused;
 }
 
-/* Keyframe Animasi Auto-Scroll */
 @keyframes scrollCards {
     0% {
         transform: translateX(0); /* Posisi awal */
@@ -370,20 +359,17 @@ body {
     }
 }
 
-/* Desain per Kartu */
 .card {
     background-color: white;
     width: 300px;
     border-radius: 15px;
     padding: 40px 20px;
     text-align: center;
-    /* Efek transisi halus saat di-hover */
     transition:
         transform 0.3s ease,
         box-shadow 0.3s ease;
 }
 
-/* Efek saat kartu ditunjuk mouse */
 .card:hover {
     transform: translateY(-10px); /* Kartu sedikit terangkat ke atas */
     box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2); /* Bayangan membesar */
@@ -407,8 +393,33 @@ body {
     line-height: 1.6;
 }
 
-/* Page 3 */
-/* Kotak Pencarian */
+/* 5. LAYOUT: COMPONENT SEARCH SECTION */
+.search-section {
+    text-align: center;
+    padding-top: 80px;
+    padding-bottom: 80px;
+    background-color: #ffffff;
+    display: flex;
+    flex-direction: column;
+    align-items: center; /* Memastikan elemen input & gambar ke tengah */
+}
+
+.search-section h2 {
+    margin-bottom: 15px;
+    color: #1a4f54;
+}
+
+.search-section p {
+    margin-bottom: 30px;
+    color: #555555;
+}
+
+.search-bar-container {
+    width: 100%;
+    max-width: 600px;
+    margin: 20px auto; /* Memberi jarak dan memposisikan di tengah */
+}
+
 .search-container {
     display: flex;
     align-items: center;
@@ -442,41 +453,13 @@ body {
     filter: brightness(0) invert(1);
 }
 
-.search-section {
-    text-align: center;
-    padding-top: 80px;
-    padding-bottom: 80px;
-    background-color: #ffffff;
-    display: flex;
-    flex-direction: column;
-    align-items: center; /* Memastikan elemen input & gambar ke tengah */
-}
-
-.search-bar-container {
-    width: 100%;
-    max-width: 600px;
-    margin: 20px auto; /* Memberi jarak dan memposisikan di tengah */
-}
-
-/* Memastikan maskot di bawah pencarian juga di tengah */
 .search-section img.mascot {
     display: block;
     margin: 0 auto;
     max-width: 500px;
 }
 
-.search-section h2 {
-    margin-bottom: 15px;
-    color: #1a4f54;
-}
-
-.search-section p {
-    margin-bottom: 30px;
-    color: #555555;
-}
-
-/* page 4 */
-/* Background Hijau Gelap untuk Section Testimoni */
+/* 6. LAYOUT: COMPONENT TESTIMONI COMPONENT */
 .bg-dark-green {
     background-color: #1a4f54;
     padding-top: 80px; /* Ditambah sedikit biar judul tidak terlalu mepet ke atas */
@@ -488,7 +471,7 @@ body {
     color: white;
     font-weight: 800;
 }
-/* --- Aturan Wrapper Testimoni --- */
+
 .testimoni-wrapper {
     width: 100vw;
     margin-left: calc(-50vw + 50%);
@@ -503,7 +486,10 @@ body {
     margin-bottom: 40px; /* Jarak antara baris atas dan bawah */
 }
 
-/* --- Desain Kartu Testimoni --- */
+.testimoni-track:hover {
+    animation-play-state: paused;
+}
+
 .testimoni-card {
     background-color: #ffffff;
     color: #333;
@@ -522,7 +508,7 @@ body {
     margin: 10px 0;
 }
 
-/* --- ANIMASI BARIS ATAS (Kanan ke Kiri) --- */
+/* Animasi Track Testimoni */
 .track-left,
 .track-top {
     animation: scrollLeftToRight 20s linear infinite;
@@ -537,7 +523,6 @@ body {
     }
 }
 
-/* --- ANIMASI BARIS BAWAH (Kiri ke Kanan) --- */
 .track-bottom {
     animation: scrollRightToLeft 20s linear infinite;
 }
@@ -551,14 +536,7 @@ body {
     }
 }
 
-/* Efek berhenti saat kursor diarahkan ke kartu */
-.testimoni-track:hover {
-    animation-play-state: paused;
-}
-
-/* =========================================
-   STYLE HALAMAN FAQ
-   ========================================= */
+/* 7. LAYOUT: COMPONENT FAQ ACCORDION SCREEN */
 .faq-section {
     background-color: #ffffff;
     padding: 80px 5%;
@@ -570,7 +548,6 @@ body {
     align-items: flex-start; /* Agar kotak tidak otomatis memanjang ke bawah */
 }
 
-/* --- Kolom Kiri (Pertanyaan) --- */
 .faq-left {
     flex: 1; /* Mengambil 50% lebar layar */
 }
@@ -602,24 +579,20 @@ body {
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.02);
 }
 
-/* Saat tombol pertanyaan ditunjuk mouse */
 .faq-btn:hover {
     border-color: #1a4f54;
     background-color: #f4fcfc;
 }
 
-/* Saat tombol pertanyaan sedang aktif / diklik */
 .faq-btn.active {
     background-color: #1a4f54; /* Warna hijau tema */
     color: #ffffff;
     border-color: #1a4f54;
 }
 
-/* --- Kolom Kanan (Jawaban) --- */
 .faq-right {
     flex: 1; /* Mengambil 50% lebar layar */
-    /* Posisi sticky membuat kotak jawaban tetap terlihat walau kolom kiri di-scroll */
-    position: sticky;
+    position: sticky; /* Posisi sticky membuat kotak jawaban tetap terlihat walau kolom kiri di-scroll */
     top: 100px;
 }
 
@@ -629,8 +602,7 @@ body {
     padding: 40px;
     box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
     border: 1px solid #c4e3e3;
-    /* Animasi saat jawaban berganti */
-    transition: opacity 0.3s ease;
+    transition: opacity 0.3s ease; /* Animasi saat jawaban berganti */
 }
 
 .faq-answer-card h3 {
@@ -647,7 +619,6 @@ body {
     line-height: 1.8;
 }
 
-/* --- Aturan Tambahan untuk Maskot di FAQ --- */
 .faq-mascot-container {
     text-align: center; /* Membuat maskot ke tengah di dalam kotak */
     margin-bottom: 25px; /* Jarak antara maskot dan judul jawaban */
@@ -656,125 +627,20 @@ body {
 .faq-mascot {
     width: 100px; /* Atur ukuran maskot agar tidak terlalu besar */
     height: auto;
-    /* Beri efek bayangan menonjol seperti permintaanmu sebelumnya */
-    filter: drop-shadow(4px 4px 8px rgba(0, 0, 0, 0.1));
+    filter: drop-shadow(
+        4px 4px 8px rgba(0, 0, 0, 0.1)
+    ); /* Beri efek bayangan menonjol */
     transition: transform 0.3s ease; /* Untuk efek animasi sedikit saat jawaban berganti */
 }
 
-/* Sedikit animasi agar maskot 'lompat' saat jawaban berganti (opsional) */
 .faq-answer-card h3.changed + p + .faq-mascot4-container .faq-mascot4 {
     transform: translateY(-5px);
 }
 
-/* =========================================
-   STYLE FOOTER (BAGIAN BAWAH)
-   ========================================= */
-.footer {
-    background-color: #1a4f54; /* Hijau gelap tema KerjainAja */
-    color: #ffffff;
-    padding-top: 60px;
-    font-family: "Poppins", sans-serif;
-}
-
-.footer-content {
-    display: flex;
-    justify-content: space-between;
-    flex-wrap: wrap; /* Agar turun ke bawah jika dibuka di HP */
-    gap: 40px;
-    padding-bottom: 50px;
-}
-
-.footer-col {
-    flex: 1;
-    min-width: 200px; /* Jangan terlalu kecil di layar sempit */
-}
-
-/* --- Kolom 1 (Kiri) --- */
-.about-col {
-    flex: 2; /* Kolom pertama dibuat lebih lebar dari yang lain */
-}
-
-.footer-logo {
-    height: 80px;
-    margin-bottom: 20px;
-}
-
-.about-col p {
-    color: #e0e0e0;
-    font-size: 15px;
-    line-height: 1.6;
-    margin-bottom: 25px;
-    max-width: 400px; /* Membatasi panjang teks agar rapi */
-}
-
-/* Ikon Sosial Media */
-.social-links {
-    display: flex;
-    gap: 15px;
-}
-
-.social-links a img {
-    width: 35px;
-    height: 35px;
-    object-fit: contain; /* Memastikan gambar tidak gepeng */
-    border-radius: 5px; /* Memberi lengkungan halus di ujung kotak, bukan bulat penuh */
-    transition: transform 0.3s ease;
-}
-
-.social-links a img:hover {
-    transform: translateY(-5px); /* Efek melayang saat kursor diarahkan */
-}
-
-/* --- Kolom 2 & 3 (Menu Link) --- */
-.links-col h3 {
-    font-size: 20px;
-    font-weight: 700;
-    margin-bottom: 25px;
-    color: #ffffff;
-}
-
-.links-col ul {
-    list-style: none; /* Menghilangkan titik (bullet) bawaan HTML */
-    padding: 0;
-}
-
-.links-col ul li {
-    margin-bottom: 15px;
-}
-
-.links-col ul li a {
-    color: #e0e0e0;
-    text-decoration: none; /* Menghilangkan garis bawah link */
-    font-size: 15px;
-    transition: color 0.3s ease;
-}
-
-.links-col ul li a:hover {
-    color: #f28b00; /* Teks berubah orange saat dihover */
-}
-
-/* --- Copyright Paling Bawah --- */
-.footer-bottom {
-    text-align: center;
-    padding: 20px;
-    background-color: #143e42; /* Warna hijau yang sedikit lebih gelap dari atasnya */
-    border-top: 1px solid rgba(255, 255, 255, 0.1);
-}
-
-.footer-bottom p {
-    color: #b0b0b0;
-    font-size: 14px;
-    margin: 0;
-}
-
-/* ========================================= */
-/* CSS DAFTAR FREELANCER (VERSI GLOW UP)     */
-/* ========================================= */
+/* 8. LAYOUT: COMPONENT FREELANCE LIST GRID */
 .freelance-section {
     padding: 60px 8%;
     background-color: #ffffff;
-
-    /* --- KODE PENARIK KE ATAS --- */
     margin-top: -60px;
     position: relative;
     z-index: 10;
@@ -899,10 +765,105 @@ body {
         transform: translateY(0);
     }
 }
-/* =========================================
-   RESPONSIVE DESIGN (TABLET & MOBILE)
-   ========================================= */
 
+/* 9. LAYOUT: COMPONENT FOOTER SCREEN */
+.footer {
+    background-color: #1a4f54; /* Hijau gelap tema KerjainAja */
+    color: #ffffff;
+    padding-top: 60px;
+    font-family: "Poppins", sans-serif;
+}
+
+.footer-content {
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap; /* Agar turun ke bawah jika dibuka di HP */
+    gap: 40px;
+    padding-bottom: 50px;
+}
+
+.footer-col {
+    flex: 1;
+    min-width: 200px; /* Jangan terlalu kecil di layar sempit */
+}
+
+.about-col {
+    flex: 2; /* Kolom pertama dibuat lebih lebar dari yang lain */
+}
+
+.footer-logo {
+    height: 80px;
+    margin-bottom: 20px;
+}
+
+.about-col p {
+    color: #e0e0e0;
+    font-size: 15px;
+    line-height: 1.6;
+    margin-bottom: 25px;
+    max-width: 400px; /* Membatasi panjang teks agar rapi */
+}
+
+.social-links {
+    display: flex;
+    gap: 15px;
+}
+
+.social-links a img {
+    width: 35px;
+    height: 35px;
+    object-fit: contain; /* Memastikan gambar tidak gepeng */
+    border-radius: 5px; /* Memberi lengkungan halus di ujung kotak */
+    transition: transform 0.3s ease;
+}
+
+.social-links a img:hover {
+    transform: translateY(-5px); /* Efek melayang saat kursor diarahkan */
+}
+
+.links-col h3 {
+    font-size: 20px;
+    font-weight: 700;
+    margin-bottom: 25px;
+    color: #ffffff;
+}
+
+.links-col ul {
+    list-style: none; /* Menghilangkan titik (bullet) bawaan HTML */
+    padding: 0;
+}
+
+.links-col ul li {
+    margin-bottom: 15px;
+}
+
+.links-col ul li a {
+    color: #e0e0e0;
+    text-decoration: none; /* Menghilangkan garis bawah link */
+    font-size: 15px;
+    transition: color 0.3s ease;
+}
+
+.links-col ul li a:hover {
+    color: #f28b00; /* Teks berubah orange saat dihover */
+}
+
+.footer-bottom {
+    text-align: center;
+    padding: 20px;
+    background-color: #143e42; /* Warna hijau yang sedikit lebih gelap */
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.footer-bottom p {
+    color: #b0b0b0;
+    font-size: 14px;
+    margin: 0;
+}
+
+/* ==========================================================================
+   10. RESPONSIVE MEDIA QUERIES
+   ========================================================================== */
 /* Untuk layar seukuran Tablet & Laptop Kecil (Max 992px) */
 @media screen and (max-width: 992px) {
     .hero {
@@ -910,32 +871,36 @@ body {
         text-align: center;
         padding-top: 120px;
     }
+
     .hero-content {
         max-width: 100%;
         margin-bottom: 40px;
         padding-right: 0;
     }
+
     .hero-buttons {
         justify-content: center;
     }
+
     .logo-image {
         width: 80%;
         margin: 0 auto;
     }
 
-    /* Perbaikan Bagian Visi yang numpuk */
     .visi {
         flex-direction: column;
         height: auto;
         min-height: auto;
         padding: 40px 20px;
     }
+
     .visi-content {
         width: 100%;
         text-align: center;
         padding-top: 0;
         margin-bottom: 40px;
     }
+
     .cards-wrapper {
         position: relative;
         width: 100%;
@@ -950,10 +915,12 @@ body {
         text-align: center;
         padding: 60px 20px;
     }
+
     .search-content {
         max-width: 100%;
         margin-bottom: 40px;
     }
+
     .search-mascot {
         width: 60%;
         margin: 0 auto;
@@ -962,11 +929,13 @@ body {
     .faq-layout {
         flex-direction: column;
     }
+
     .faq-left,
     .faq-right {
         width: 100%;
         padding: 0;
     }
+
     .faq-right {
         margin-top: 40px;
     }
@@ -980,17 +949,18 @@ body {
         gap: 15px;
         text-align: center;
     }
+
     nav {
         flex-wrap: wrap;
         justify-content: center;
         gap: 15px;
     }
+
     .nav-actions {
         width: 100%;
         justify-content: center;
     }
 
-    /* Ubah Grid Pahlawan/Pekerja jadi 2 kolom */
     .freelance-grid {
         grid-template-columns: repeat(2, 1fr);
         gap: 15px;
@@ -1001,6 +971,7 @@ body {
         text-align: center;
         gap: 40px;
     }
+
     .social-links {
         justify-content: center;
     }
@@ -1011,13 +982,16 @@ body {
     .hero h1 {
         font-size: 32px;
     }
+
     .hero h2 {
         font-size: 24px;
     }
+
     .hero-buttons {
         flex-direction: column;
         gap: 15px;
     }
+
     .btn-primary,
     .btn-outline {
         width: 100%;
@@ -1031,6 +1005,7 @@ body {
         padding: 15px;
         gap: 15px;
     }
+
     .search-container input {
         text-align: center;
     }
@@ -1039,11 +1014,11 @@ body {
         flex-wrap: wrap;
         gap: 10px;
     }
+
     .btn-filter {
         flex: 1 1 40%; /* Biar tombol kategorinya menyesuaikan lebar */
     }
 
-    /* Ubah Grid Pahlawan/Pekerja jadi 1 kolom ke bawah */
     .freelance-grid {
         grid-template-columns: 1fr;
     }

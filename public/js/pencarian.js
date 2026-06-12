@@ -1,70 +1,85 @@
-// FITUR DETEKSI LOKASI
+/* 1. FITUR DETEKSI LOKASI USER (GEOLOCATION API) */
 const lokasiTeks = document.getElementById("lokasi-user");
 
+// Fungsi inisiasi pengecekan dukungan fitur lokasi browser
 function dapatkanLokasi() {
-  if (navigator.geolocation) {
-    navigator.geolocation.getCurrentPosition(tampilkanPosisi, tampilkanError);
-  } else {
-    if (lokasiTeks)
-      lokasiTeks.innerHTML = "📍 Browser kamu tidak mendukung fitur lokasi.";
-  }
+    if (navigator.geolocation) {
+        navigator.geolocation.getCurrentPosition(
+            tampilkanPosisi,
+            tampilkanError,
+        );
+    } else {
+        if (lokasiTeks) {
+            lokasiTeks.innerHTML =
+                "📍 Browser kamu tidak mendukung fitur lokasi.";
+        }
+    }
 }
 
+// Fungsi sukses mengambil koordinat dan melakukan reverse geocoding via Nominatim API
 function tampilkanPosisi(position) {
-  let lat = position.coords.latitude;
-  let lon = position.coords.longitude;
+    let lat = position.coords.latitude;
+    let lon = position.coords.longitude;
 
-  fetch(
-    `https://nominatim.openstreetmap.org/reverse?format=json&lat=${lat}&lon=${lon}`,
-  )
-    .then((response) => response.json())
-    .then((data) => {
-      let kota =
-        data.address.city ||
-        data.address.town ||
-        data.address.county ||
-        "Lokasi ditemukan";
-      if (lokasiTeks) lokasiTeks.innerHTML = "📍 Lokasi kamu: " + kota;
-    })
-    .catch(() => {
-      if (lokasiTeks) lokasiTeks.innerHTML = `📍 Koordinat: ${lat}, ${lon}`;
-    });
+    fetch(
+        `https://nominatim.openstreetmap.org/reverse?format=json&lat=${lat}&lon=${lon}`,
+    )
+        .then((response) => response.json())
+        .then((data) => {
+            let kota =
+                data.address.city ||
+                data.address.town ||
+                data.address.county ||
+                "Lokasi ditemukan";
+
+            if (lokasiTeks) {
+                lokasiTeks.innerHTML = "📍 Lokasi kamu: " + kota;
+            }
+        })
+        .catch(() => {
+            if (lokasiTeks) {
+                lokasiTeks.innerHTML = `📍 Koordinat: ${lat}, ${lon}`;
+            }
+        });
 }
 
+// Fungsi gagal / callback error ketika akses lokasi tidak diberikan atau time out
 function tampilkanError(error) {
-  if (!lokasiTeks) return;
-  switch (error.code) {
-    case error.PERMISSION_DENIED:
-      lokasiTeks.innerHTML = "📍 Akses lokasi ditolak oleh pengguna.";
-      break;
-    case error.POSITION_UNAVAILABLE:
-      lokasiTeks.innerHTML = "📍 Informasi lokasi tidak tersedia.";
-      break;
-    case error.TIMEOUT:
-      lokasiTeks.innerHTML = "📍 Waktu pencarian lokasi habis.";
-      break;
-  }
+    if (!lokasiTeks) return;
+
+    switch (error.code) {
+        case error.PERMISSION_DENIED:
+            lokasiTeks.innerHTML = "📍 Akses lokasi ditolak oleh pengguna.";
+            break;
+        case error.POSITION_UNAVAILABLE:
+            lokasiTeks.innerHTML = "📍 Informasi lokasi tidak tersedia.";
+            break;
+        case error.TIMEOUT:
+            lokasiTeks.innerHTML = "📍 Waktu pencarian lokasi habis.";
+            break;
+    }
 }
 
+// Menjalankan pendeteksian lokasi secara otomatis saat halaman web selesai dimuat
 window.onload = dapatkanLokasi;
 
-// FITUR FILTER WILAYAH (SYARAT ETS JAVASCRIPT)
-
+/* 2. FITUR FILTER WILAYAH (LOGIKA MANIPULASI DOM) */
 const filterSelect = document.getElementById("filter-wilayah");
 const semuaKartu = document.querySelectorAll(".card");
 
+// Memproses penyaringan kartu mitra berdasarkan atribut data-wilayah ketika dropdown berubah
 if (filterSelect) {
-  filterSelect.addEventListener("change", function () {
-    const wilayahPilihan = this.value;
+    filterSelect.addEventListener("change", function () {
+        const wilayahPilihan = this.value;
 
-    semuaKartu.forEach((kartu) => {
-      const wilayahKartu = kartu.getAttribute("data-wilayah");
+        semuaKartu.forEach((kartu) => {
+            const wilayahKartu = kartu.getAttribute("data-wilayah");
 
-      if (wilayahPilihan === "semua" || wilayahPilihan === wilayahKartu) {
-        kartu.style.display = "block"; // Munculkan
-      } else {
-        kartu.style.display = "none"; // Sembunyikan
-      }
+            if (wilayahPilihan === "semua" || wilayahPilihan === wilayahKartu) {
+                kartu.style.display = "block"; // Munculkan kartu yang cocok
+            } else {
+                kartu.style.display = "none"; // Sembunyikan kartu yang tidak cocok
+            }
+        });
     });
-  });
 }

@@ -1,3 +1,5 @@
+/* 9. EVENT KONFIRMASI PEMBAYARAN (FETCH API & SWEETALERT2) */
+
 document.getElementById("btnKonfirmasi").addEventListener("click", function () {
     // Ambil ID pesanan dari URL (contoh: /tagihan/2 → id = 2)
     const id = window.location.pathname.split("/").pop();
@@ -5,6 +7,7 @@ document.getElementById("btnKonfirmasi").addEventListener("click", function () {
         'meta[name="csrf-token"]',
     )?.content;
 
+    // Mengirimkan request POST konfirmasi pembayaran ke server Laravel
     fetch(`/tagihan/${id}/konfirmasi`, {
         method: "POST",
         headers: {
@@ -14,6 +17,7 @@ document.getElementById("btnKonfirmasi").addEventListener("click", function () {
     })
         .then((res) => res.json())
         .then((data) => {
+            // Menampilkan alert sukses jika server mengembalikan respons true
             if (data.success) {
                 Swal.fire({
                     title: "Konfirmasi Berhasil!",
@@ -23,12 +27,13 @@ document.getElementById("btnKonfirmasi").addEventListener("click", function () {
                     confirmButtonText: "OK, Kembali ke Beranda",
                 }).then((result) => {
                     if (result.isConfirmed) {
-                        window.location.href = "/";
+                        window.location.href = "/"; // Redirect ke halaman beranda
                     }
                 });
             }
         })
         .catch(() => {
+            // Menampilkan alert gagal jika terjadi gangguan koneksi atau error server
             Swal.fire({
                 title: "Gagal!",
                 text: "Terjadi kesalahan. Silakan coba lagi.",

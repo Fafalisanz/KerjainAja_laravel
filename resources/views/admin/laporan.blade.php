@@ -2,11 +2,12 @@
 
 @section('content')
 
+{{-- Bagian Atas / Header Halaman Laporan --}}
 <div class="page-header">
     <h1>📄 Laporan Dinamis</h1>
 </div>
 
-{{-- Filter --}}
+{{-- Blok Komponen Formulir Filter Data --}}
 <div class="card">
     <form action="{{ route('admin.laporan') }}" method="GET" class="filter-form">
         <div>
@@ -35,7 +36,7 @@
     </form>
 </div>
 
-{{-- Summary --}}
+{{-- Blok Grid Kartu Ringkasan (Summary) Akumulasi Data --}}
 <div class="stats-grid" style="grid-template-columns: repeat(2, 1fr);">
     <div class="stat-card">
         <div class="icon">📋</div>
@@ -49,7 +50,7 @@
     </div>
 </div>
 
-{{-- Tabel --}}
+{{-- Blok Komponen Tabel Informasi Pesanan Terfilter --}}
 <div class="card">
     <table>
         <thead>
@@ -66,22 +67,28 @@
         </thead>
         <tbody>
             @forelse($pesanans as $i => $p)
-            <tr>
-                <td>{{ $pesanans->firstItem() + $i }}</td>
-                <td>#{{ 1000 + $p->id }}</td>
-                <td>{{ $p->nama_pekerja }}</td>
-                <td>{{ $p->durasi }}</td>
-                <td>{{ $p->metode_pembayaran }}</td>
-                <td>Rp {{ number_format($p->total_tagihan, 0, ',', '.') }}</td>
-                <td><span class="badge badge-warning">{{ $p->status }}</span></td>
-                <td>{{ \Carbon\Carbon::parse($p->tanggal_pesan)->format('d/m/Y') }}</td>
-            </tr>
+                <tr>
+                    <td>{{ $pesanans->firstItem() + $i }}</td>
+                    <td>#{{ 1000 + $p->id }}</td>
+                    <td>{{ $p->nama_pekerja }}</td>
+                    <td>{{ $p->durasi }}</td>
+                    <td>{{ $p->metode_pembayaran }}</td>
+                    <td>Rp {{ number_format($p->total_tagihan, 0, ',', '.') }}</td>
+                    <td><span class="badge badge-warning">{{ $p->status }}</span></td>
+                    <td>{{ \Carbon\Carbon::parse($p->tanggal_pesan)->format('d/m/Y') }}</td>
+                </tr>
             @empty
-            <tr><td colspan="8" style="text-align:center;">Tidak ada data</td></tr>
+                <tr>
+                    <td colspan="8" style="text-align:center;">Tidak ada data</td>
+                </tr>
             @endforelse
         </tbody>
     </table>
-    <div class="pagination-wrapper">{{ $pesanans->links() }}</div>
+    
+    {{-- Komponen Navigasi Paginasi Halaman --}}
+    <div class="pagination-wrapper">
+        {{ $pesanans->links() }}
+    </div>
 </div>
 
 @endsection

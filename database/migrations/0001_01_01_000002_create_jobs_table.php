@@ -11,6 +11,7 @@ return new class extends Migration
      */
     public function up(): void
     {
+        // Membuat tabel jobs untuk menyimpan daftar tugas (queue) yang berjalan di latar belakang
         Schema::create('jobs', function (Blueprint $table) {
             $table->id();
             $table->string('queue')->index();
@@ -21,6 +22,7 @@ return new class extends Migration
             $table->unsignedInteger('created_at');
         });
 
+        // Membuat tabel job_batches untuk memantau performa proses sekelompok job (batching) secara bersamaan
         Schema::create('job_batches', function (Blueprint $table) {
             $table->string('id')->primary();
             $table->string('name');
@@ -34,6 +36,7 @@ return new class extends Migration
             $table->integer('finished_at')->nullable();
         });
 
+        // Membuat tabel failed_jobs untuk mencatat log detail error ketika ada job antrean yang gagal dieksekusi
         Schema::create('failed_jobs', function (Blueprint $table) {
             $table->id();
             $table->string('uuid')->unique();
@@ -50,6 +53,7 @@ return new class extends Migration
      */
     public function down(): void
     {
+        // Menghapus tabel antrean (jobs, job_batches, failed_jobs) saat melakukan rollback migration
         Schema::dropIfExists('jobs');
         Schema::dropIfExists('job_batches');
         Schema::dropIfExists('failed_jobs');

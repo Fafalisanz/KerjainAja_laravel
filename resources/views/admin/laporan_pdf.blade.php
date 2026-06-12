@@ -19,12 +19,15 @@
     </style>
 </head>
 <body>
+
+    {{-- KOP / HEADER LAPORAN DOKUMEN --}}
     <div class="header">
         <h1>KerjainAja - Laporan Pesanan</h1>
         <p>Periode: {{ \Carbon\Carbon::parse($dari)->format('d/m/Y') }} - {{ \Carbon\Carbon::parse($sampai)->format('d/m/Y') }}</p>
         <p>Dicetak: {{ now()->format('d/m/Y H:i') }}</p>
     </div>
 
+    {{-- TABEL DATA LOG TRANSAKSI PESANAN MITRA --}}
     <table>
         <thead>
             <tr>
@@ -40,18 +43,20 @@
         </thead>
         <tbody>
             @foreach($pesanans as $i => $p)
-            <tr>
-                <td>{{ $i + 1 }}</td>
-                <td>#{{ 1000 + $p->id }}</td>
-                <td>{{ $p->nama_pekerja }}</td>
-                <td>{{ $p->durasi }}</td>
-                <td>{{ $p->metode_pembayaran }}</td>
-                <td>Rp {{ number_format($p->total_tagihan, 0, ',', '.') }}</td>
-                <td>{{ $p->status }}</td>
-                <td>{{ \Carbon\Carbon::parse($p->tanggal_pesan)->format('d/m/Y') }}</td>
-            </tr>
+                <tr>
+                    <td>{{ $i + 1 }}</td>
+                    <td>#{{ 1000 + $p->id }}</td>
+                    <td>{{ $p->nama_pekerja }}</td>
+                    <td>{{ $p->durasi }}</td>
+                    <td>{{ $p->metode_pembayaran }}</td>
+                    <td>Rp {{ number_format($p->total_tagihan, 0, ',', '.') }}</td>
+                    <td>{{ $p->status }}</td>
+                    <td>{{ \Carbon\Carbon::parse($p->tanggal_pesan)->format('d/m/Y') }}</td>
+                </tr>
             @endforeach
         </tbody>
+        
+        {{-- AKUMULASI TOTAL PENDAPATAN --}}
         <tfoot>
             <tr>
                 <td colspan="5" style="text-align:right; font-weight:bold;">Total Pendapatan:</td>
@@ -62,8 +67,10 @@
         </tfoot>
     </table>
 
+    {{-- FOOTER NOTA / RINGKASAN DATA CETAK --}}
     <div class="footer">
         Total {{ $pesanans->count() }} pesanan | KerjainAja © {{ now()->year }}
     </div>
+
 </body>
 </html>

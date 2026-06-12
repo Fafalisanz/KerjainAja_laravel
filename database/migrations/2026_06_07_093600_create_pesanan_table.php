@@ -8,6 +8,7 @@ return new class extends Migration
 {
     public function up(): void
     {
+        // Membuat tabel pesanan untuk menampung data transaksi antara pencari jasa dan mitra
         Schema::create('pesanan', function (Blueprint $table) {
             $table->id();
             $table->unsignedBigInteger('user_id')->nullable();
@@ -24,6 +25,7 @@ return new class extends Migration
 
     public function down(): void
     {
+        // Menghapus tabel pesanan saat melakukan rollback migration
         Schema::dropIfExists('pesanan');
     }
 };

@@ -1,7 +1,9 @@
+/* 1. GLOBAL STYLES & RESET */
 body {
     background-color: #f4f7f6;
 }
 
+/* 2. LAYOUT: INLINE FORM PENCARIAN ATAS */
 .search-box-inline form {
     display: flex;
     gap: 10px;
@@ -38,7 +40,92 @@ body {
     background-color: #0b3742; /* Warnanya jadi sedikit lebih gelap */
 }
 
-/* --- GRID KARTU --- */
+/* 3. LAYOUT: KONTROL HEADER MODERN & DROPDOWN FILTER */
+.header-pencarian-modern {
+    background-color: #ffffff;
+    padding: 20px 25px;
+    border-radius: 15px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+    margin-bottom: 30px;
+    margin-top: 20px;
+}
+
+.top-controls {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 15px;
+}
+
+.back-link-modern {
+    text-decoration: none;
+    color: #0f4c5c;
+    font-weight: 600;
+    padding: 10px 15px;
+    border: 1px solid #0f4c5c;
+    border-radius: 20px;
+    transition: all 0.3s ease;
+}
+
+.back-link-modern:hover {
+    background-color: #0f4c5c;
+    color: white;
+}
+
+.dropdown-modern {
+    padding: 10px 15px;
+    border-radius: 20px;
+    border: 1px solid #ccc;
+    font-family: "Poppins", sans-serif;
+    outline: none;
+    cursor: pointer;
+}
+
+.garis-pembatas {
+    border: none;
+    border-top: 1px solid #eeeeee;
+    margin: 20px 0;
+}
+
+.results-info {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 15px;
+}
+
+.judul-hasil {
+    margin: 0;
+    font-size: 1.4rem;
+    color: #333;
+}
+
+.lokasi-info {
+    text-align: right;
+}
+
+.lokasi-info p {
+    margin: 0 0 5px 0;
+    font-size: 0.9rem;
+    color: #777;
+}
+
+.lokasi-info h4 {
+    margin: 0;
+    color: #0f4c5c;
+    font-weight: 600;
+}
+
+#lokasi-user {
+    color: #0d4a48;
+    margin-top: 5px;
+    font-size: 14px;
+    font-weight: 600;
+}
+
+/* 4. LAYOUT: GRID KARTU PEKERJA/FREELANCER */
 .card-grid {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
@@ -123,103 +210,7 @@ body {
     transform: scale(1.02);
 }
 
-#lokasi-user {
-    color: #0d4a48;
-    margin-top: 5px;
-    font-size: 14px;
-    font-weight: 600;
-}
-
-/* --- CONTAINER UTAMA BARU --- */
-.header-pencarian-modern {
-    background-color: #ffffff;
-    padding: 20px 25px;
-    border-radius: 15px;
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
-    margin-bottom: 30px;
-    margin-top: 20px;
-}
-
-.top-controls {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    flex-wrap: wrap;
-    gap: 15px;
-}
-
-.back-link-modern {
-    text-decoration: none;
-    color: #0f4c5c;
-    font-weight: 600;
-    padding: 10px 15px;
-    border: 1px solid #0f4c5c;
-    border-radius: 20px;
-    transition: all 0.3s ease;
-}
-
-.back-link-modern:hover {
-    background-color: #0f4c5c;
-    color: white;
-}
-
-.dropdown-modern {
-    padding: 10px 15px;
-    border-radius: 20px;
-    border: 1px solid #ccc;
-    font-family: "Poppins", sans-serif;
-    outline: none;
-    cursor: pointer;
-}
-
-.garis-pembatas {
-    border: none;
-    border-top: 1px solid #eeeeee;
-    margin: 20px 0;
-}
-
-.results-info {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    flex-wrap: wrap;
-    gap: 15px;
-}
-
-.judul-hasil {
-    margin: 0;
-    font-size: 1.4rem;
-    color: #333;
-}
-
-.lokasi-info {
-    text-align: right;
-}
-
-.lokasi-info p {
-    margin: 0 0 5px 0;
-    font-size: 0.9rem;
-    color: #777;
-}
-
-.lokasi-info h4 {
-    margin: 0;
-    color: #0f4c5c;
-    font-weight: 600;
-}
-
-@media (max-width: 768px) {
-    .top-controls,
-    .results-info {
-        flex-direction: column;
-        align-items: flex-start;
-    }
-    .lokasi-info {
-        text-align: left;
-    }
-}
-
-/* --- PERBAIKAN STRUKTUR PAGINATION UL/LI --- */
+/* 5. COMPONENT: NAVIGASI SYSTEM PAGINATION */
 .pagination-wrapper {
     display: flex;
     justify-content: center;
@@ -271,4 +262,17 @@ body {
     border-color: #ddd;
     cursor: not-allowed;
     box-shadow: none;
+}
+
+/* 6. RESPONSIVE DESIGN MEDIA QUERIES */
+@media (max-width: 768px) {
+    .top-controls,
+    .results-info {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    .lokasi-info {
+        text-align: left;
+    }
 }

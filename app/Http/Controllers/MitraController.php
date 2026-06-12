@@ -12,11 +12,13 @@ class MitraController extends Controller
 {
     public function index()
     {
+        // Menampilkan halaman formulir pendaftaran (gabung mitra)
         return view('gabung_mitra');
     }
 
     public function proses(Request $request)
     {
+        // Validasi input data pendaftaran mitra dan berkas foto
         $request->validate([
             'nama_lengkap' => 'required|string|max:255',
             'no_wa'        => 'required|string|max:20',
@@ -28,25 +30,25 @@ class MitraController extends Controller
             'foto_selfie'  => 'required|image|max:2048',
         ]);
 
-        // Upload foto KTP
+        // Upload foto KTP ke dalam folder public/uploads
         $ktp     = $request->file('foto_ktp');
         $namaKtp = time() . '_KTP_' . $ktp->getClientOriginalName();
         $ktp->move(public_path('uploads'), $namaKtp);
 
-        // Upload foto selfie
+        // Upload foto selfie ke dalam folder public/uploads
         $selfie     = $request->file('foto_selfie');
         $namaSelfie = time() . '_Selfie_' . $selfie->getClientOriginalName();
         $selfie->move(public_path('uploads'), $namaSelfie);
 
-        // Simpan ke tabel users dengan role mitra
-       $user = User::create([
+        // Simpan data ke tabel users sebagai akun autentikasi dengan role mitra
+        $user = User::create([
             'nama'     => $request->nama_lengkap,
             'email'    => $request->email,
             'password' => Hash::make($request->password),
             'role'     => 'mitra',
         ]);
 
-        // Simpan ke tabel mitra
+        // Simpan data profil detail mitra ke tabel mitra menggunakan Query Builder
         DB::table('mitra')->insert([
             'user_id'        => $user->id,
             'nama_lengkap'   => $request->nama_lengkap,
@@ -58,9 +60,10 @@ class MitraController extends Controller
             'tanggal_daftar' => now(),
         ]);
 
+        // Otomatis membuat user langsung masuk/login setelah mendaftar
         Auth::login($user);
 
         return redirect()->route('home')
-                         ->with('success', 'Pendaftaran mitra berhasil! Silakan login.');
+            ->with('success', 'Pendaftaran mitra berhasil! Silakan login.');
     }
 }

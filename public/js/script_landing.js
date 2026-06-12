@@ -1,19 +1,21 @@
-// --- FITUR PENCARIAN ---
+/* 4. FITUR PENCARIAN UTAMA (REDIRECT BROWSER) */
 const searchInput = document.getElementById("searchInput");
 
-searchInput.addEventListener("keypress", function (e) {
-    if (e.key === "Enter") {
-        const keyword = searchInput.value;
-        if (keyword.trim() !== "") {
-            window.location.href =
-                "/pencarian?keyword=" + encodeURIComponent(keyword);
-        } else {
-            alert("Silakan ketik jasa yang Anda cari terlebih dahulu!");
+if (searchInput) {
+    searchInput.addEventListener("keypress", function (e) {
+        if (e.key === "Enter") {
+            const keyword = searchInput.value;
+            if (keyword.trim() !== "") {
+                window.location.href =
+                    "/pencarian?keyword=" + encodeURIComponent(keyword);
+            } else {
+                alert("Silakan ketik jasa yang Anda cari terlebih dahulu!");
+            }
         }
-    }
-});
+    });
+}
 
-// --- DATA JAWABAN FAQ ---
+/* 5. DATA DAN FUNGSI INTERAKTIF KOMPONEN FAQ ACCORDION */
 const faqData = {
     faq1: {
         title: "Apa itu KerjainAja?",
@@ -41,41 +43,39 @@ const faqData = {
     },
 };
 
-// --- FUNGSI MENGUBAH JAWABAN, WARNA TOMBOL, & ANIMASI MASKOT ---
+// Mengubah teks deskripsi jawaban, warna tombol aktif, dan mentrigger animasi maskot
 function showAnswer(faqId, clickedElement) {
     // 1. Ubah teks judul dan deskripsi
     document.getElementById("answer-title").innerText = faqData[faqId].title;
     document.getElementById("answer-desc").innerText = faqData[faqId].desc;
 
-    // 2. MENGHAPUS WARNA HIJAU DARI SEMUA TOMBOL
+    // 2. Menghapus warna hijau aktif dari semua tombol FAQ
     const semuaTombol = document.querySelectorAll(".faq-btn");
     semuaTombol.forEach((btn) => btn.classList.remove("active"));
 
-    // 3. MEMBERIKAN WARNA HIJAU KE TOMBOL YANG DIKLIK
+    // 3. Memberikan warna hijau aktif ke tombol yang diklik oleh user
     clickedElement.classList.add("active");
 
-    // 4. ANIMASI MASKOT LOMPAT
+    // 4. Animasi maskot melompat kecil
     const mascot = document.querySelector(".faq-mascot");
     if (mascot) {
-        mascot.style.transform = "translateY(-10px) rotate(-5deg)"; // Efek lompat
+        mascot.style.transform = "translateY(-10px) rotate(-5deg)"; // Efek lompat ke atas
         setTimeout(() => {
-            mascot.style.transform = "translateY(0) rotate(0deg)"; // Kembali normal
+            mascot.style.transform = "translateY(0) rotate(0deg)"; // Kembali ke posisi semula
         }, 300);
-    } // <--- PERHATIKAN INI ADALAH PENUTUP DARI FUNGSI SHOW ANSWER
+    }
 }
 
-// =======================================================
-// FITUR FILTER KATEGORI (DARI DATABASE) - BERDIRI SENDIRI
-// =======================================================
+/* 6. FITUR FILTER KATEGORI FREELANCER (MANIPULASI ANIMASI DOM) */
 function jalankanFilter(event, kategori) {
     event.preventDefault();
 
-    // 1. Ubah warna tombol
+    // 1. Ubah warna tombol filter aktif
     let buttons = document.querySelectorAll(".btn-filter");
     buttons.forEach((btn) => btn.classList.remove("active"));
     event.currentTarget.classList.add("active");
 
-    // 2. Filter kartunya dengan animasi
+    // 2. Filter tampilan kartu dengan injeksi keyframe CSS animasi
     let cards = document.querySelectorAll(".freelance-card");
     cards.forEach((card) => {
         if (
@@ -90,15 +90,17 @@ function jalankanFilter(event, kategori) {
     });
 }
 
-// Dropdown Profil
-
+/* 7. EVENT TOGGLE DROPDOWN MENU PROFIL */
 function toggleDropdown() {
     document.getElementById("profilMenu").classList.toggle("show");
 }
 
+// Menutup menu dropdown secara otomatis jika pengguna mengklik area luar menu profil
 document.addEventListener("click", function (e) {
     const dropdown = document.querySelector(".profile-dropdown");
-    if (dropdown && !dropdown.contains(e.target)) {
-        document.getElementById("profilMenu").classList.remove("show");
+    const profilMenu = document.getElementById("profilMenu");
+
+    if (dropdown && profilMenu && !dropdown.contains(e.target)) {
+        profilMenu.classList.remove("show");
     }
 });
